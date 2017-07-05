@@ -14,3 +14,7 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->get('general/{ville}', 'WeatherController@getWeather');
+
+$app->get('user/{id}', 'UserController@show');
