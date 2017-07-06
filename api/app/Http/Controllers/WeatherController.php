@@ -6,6 +6,7 @@ use App\Wheather;
 
 class WeatherController extends Controller
 {
+
     /**
      * Retrieve the user for the given ID.
      *
@@ -24,8 +25,11 @@ class WeatherController extends Controller
 
         // group will be used to select activity
         $group_weather = substr($data_weather->weather[0]->id, 0, 1);
+
+        $value = config('APP_TIMEZONE');
+        var_dump($value);
         
-        return response()->json(['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather]);
+        // return response()->json(['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather]);
     }
 
     public function getWeeklyWeather($ville){
@@ -40,7 +44,10 @@ class WeatherController extends Controller
 
         // select city name, desc, temp and group
         $city_name = $data_weather->city->name;
-        echo $city_name;
+
+
+
+
         //$desc_weather = $data_weather->weather[0]->description;
         //$actual_temp = $data_weather->main->temp;
 
