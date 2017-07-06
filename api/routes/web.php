@@ -15,6 +15,11 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('general/{ville}', 'WeatherController@getWeather');
+// speech
+$app->get('message', 'SpeechController@interpretSpeech');
+
+// weather
+$app->get('weather/{city}', 'WeatherController@getWeather');
+$app->get('weather/{city}/week', 'WeatherController@getWeeklyWeather');
 
 $app->get('user/{id}', 'UserController@show');
