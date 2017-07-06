@@ -23,3 +23,6 @@ $app->get('weather/{city}', 'WeatherController@getWeather');
 $app->get('weather/{city}/week', 'WeatherController@getWeeklyWeather');
 
 $app->get('user/{id}', 'UserController@show');
+
+// Films
+$app->get('movies/{title}', 'MoviesController@getFilmTitle');
