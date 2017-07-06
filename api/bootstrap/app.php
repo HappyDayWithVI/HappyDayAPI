@@ -97,4 +97,13 @@ $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../routes/web.php';
 });
 
+/*
+|--------------------------------------------------------------------------
+| CONFIG FILE
+|--------------------------------------------------------------------------
+|
+*/
+require_once __DIR__.'/../config/api.php';
+
+
 return $app;
