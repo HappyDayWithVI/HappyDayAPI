@@ -11,9 +11,9 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
+// $app->get('/', function () use ($app) {
+//     return $app->version();
+// });
 
 // speech
 $app->get('message/{message}', 'SpeechController@interpretSpeech');
@@ -27,3 +27,7 @@ $app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
 
 $app->get('user/{id}', 'UserController@show');
 
+
+Route::get('/', ['middleware' => 'cors', function() {
+    return 'You did it!';
+}]);
