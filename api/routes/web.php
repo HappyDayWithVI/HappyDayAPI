@@ -16,7 +16,7 @@
 // });
 
 // speech
-$app->get('message/{message}', 'SpeechController@interpretSpeech');
+// $app->get('message/{message}', 'SpeechController@interpretSpeech');
 
 // weather
 $app->get('weather/{city}', 'WeatherController@getWeather');
@@ -28,6 +28,7 @@ $app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
 $app->get('user/{id}', 'UserController@show');
 
 
-$app->get('/', ['prefix' => 'api/v1', 'middleware' => 'cors'], function() {
-    return 'You did it!';
+
+$app->group(['middleware' => 'cors'], function($app){
+	$app->get('message/{message}', 'SpeechController@interpretSpeech');
 });
