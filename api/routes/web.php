@@ -16,7 +16,7 @@
 // });
 
 // speech
-// $app->get('message/{message}', 'SpeechController@interpretSpeech');
+$app->get('message/{message}', 'SpeechController@interpretSpeech');
 
 // weather
 $app->get('weather/{city}', 'WeatherController@getWeather');
