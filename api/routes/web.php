@@ -28,6 +28,6 @@ $app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
 $app->get('user/{id}', 'UserController@show');
 
 
-Route::get('/', ['middleware' => 'cors', function() {
+$app->get('/', ['prefix' => 'api/v1', 'middleware' => 'cors'], function() {
     return 'You did it!';
-}]);
+});
