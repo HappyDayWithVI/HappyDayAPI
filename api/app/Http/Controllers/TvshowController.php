@@ -9,36 +9,81 @@ class TvshowController extends Controller{
     public $token;
 
     public function __construct(){
-        $this->token = "bonjour";
-
-
+        // GET TOKEN FROM TVSHOW API
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'https://api.github.com/user', [
-            'auth' => ['user', 'pass']
-        ]);
 
-        echo $res->getStatusCode();
+        $req = $client->request('POST', 'https://api.thetvdb.com/login', [
+            'json' => ['apikey' => '17CFE9A03C551B87']
+        ]);
+        $res = json_decode($req->getBody());
+
+        $this->token = $res->token;
     }
 
-    /**
-     * Retrieve the user for the given ID.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+
+    public function getTvshowByName($name){
+        $client = new \GuzzleHttp\Client();
+
+        $request = $client->request('GET', 'https://api.thetvdb.com/search/series?name='.$name, [
+            'headers' => [
+                'Authorization'     => 'Bearer '.$this->token,
+                'Accept-Language'   => 'fr'
+            ]
+        ]);
+                
+        $res = json_decode($request->getBody()->getContents());
+
+        $series_search = array();
+
+        foreach ($res->data as $value) {
+            $tvshow_name = $value->seriesName;
+            $tvshow_channel = $value->network;
+            $tvshow_firsttime = $value->firstAired;
+            $tvshow_desc = $value->overview;
+            $tvshow_status = $value->status;           
+
+            $tvshow = ["name" => $tvshow_name, "desc" => $tvshow_desc, "channel" => $tvshow_channel, "first time" => $tvshow_firsttime, "status" => $tvshow_status];
+
+            array_push($series_search, $tvshow);
+        }
+
+        return ['id' => 3, 'result' => [$series_search]];
+
+    }
+
+
     public function getTvshowByGenre($genre){
-        if (strpos($genre, ",") != false) {
-            $genres = explode(',', $genre);
-        }else{
-            $genres = $genre;
-        }
 
-        echo  "Regarder des séries ? <br>";
+        // in $this->endpoint I have https://172.17.8.111:443
+        $client = new \GuzzleHttp\Client();
+        // $client->setDefaultOption('headers/Authorization', 'Bearer '.$this->token);
 
-        foreach ($genres as $val) {
-            echo $val;
-            echo "<br>";
-        }
+        // $request = $client->get('https://api.thetvdb.com/search/series?name=penny');
+
+
+        $request = $client->request('GET', 'https://api.thetvdb.com/search/series?name=penny', [
+            'headers' => [
+                'Authorization'     => 'Bearer '.$this->token,
+                'Accept-Language'   => 'fr'
+            ]
+        ]);
+                
+        var_dump($request->getBody()->getContents());
+
+
+        // if (strpos($genre, ",") != false) {
+        //     $genres = explode(',', $genre);
+        // }else{
+        //     $genres = $genre;
+        // }
+
+        // echo  "Regarder des séries ? <br>";
+
+        // foreach ($genres as $val) {
+        //     echo $val;
+        //     echo "<br>";
+        // }
+
     }
 
     

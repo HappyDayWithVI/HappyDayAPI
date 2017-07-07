@@ -26,12 +26,21 @@ class SpeechController extends WeatherController{
     			}else{
     				$res = $this->getWeather($city);
     			}
+    		}else if(in_array("serie", $message_item)){
+                $pos_keyword = array_search("serie", $message_item);
+                unset($message_item[$pos_keyword]);
 
-    			return response()->json($res);
+                $arg = "";
 
-    		
+                foreach ($message_item as $val) {
+                    $arg .= $val." ";
+                }
 
-    		}
+                $res = app('App\Http\Controllers\TvshowController')->getTvshowByName($arg);
+
+            }
+
+            return response()->json($res);
     	}
 
         // if general get weather

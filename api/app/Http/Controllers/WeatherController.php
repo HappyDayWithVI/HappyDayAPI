@@ -50,6 +50,6 @@ class WeatherController extends Controller
         // select city name
         $city_name = $data_weather->city->name;        
 
-        return ['id' => 2, 'result' => ['city' => $city_name, 'week' => [$week_weather]]];
+        return ['id' => 3, 'result' => ['city' => $city_name, 'week' => $week_weather]];
     }
 }

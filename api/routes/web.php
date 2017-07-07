@@ -23,7 +23,7 @@ $app->get('weather/{city}', 'WeatherController@getWeather');
 $app->get('weather/{city}/week', 'WeatherController@getWeeklyWeather');
 
 // tvshow
-$app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
+$app->get('tvshow/search/{name}', 'TvshowController@getTvshowByName');
 
 $app->get('user/{id}', 'UserController@show');
 
