@@ -26,7 +26,7 @@ class WeatherController extends Controller
         // group will be used to select activity
         $group_weather = substr($data_weather->weather[0]->id, 0, 1);
         
-        return response()->json(['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather]);
+        return ['id' => 2, 'result' => ['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather]];
     }
 
     public function getWeeklyWeather($ville){
@@ -50,6 +50,6 @@ class WeatherController extends Controller
         // select city name
         $city_name = $data_weather->city->name;        
 
-        return response()->json(['city' => $city_name, 'week' => [$week_weather]]);
+        return ['id' => 3, 'result' => ['city' => $city_name, 'week' => [$week_weather]]];
     }
 }

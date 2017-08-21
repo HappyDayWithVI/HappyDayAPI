@@ -16,10 +16,14 @@ $app->get('/', function () use ($app) {
 });
 
 // speech
-$app->get('message', 'SpeechController@interpretSpeech');
+$app->get('message/{message}', 'SpeechController@interpretSpeech');
 
 // weather
 $app->get('weather/{city}', 'WeatherController@getWeather');
 $app->get('weather/{city}/week', 'WeatherController@getWeeklyWeather');
 
+// tvshow
+$app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
+
 $app->get('user/{id}', 'UserController@show');
+
