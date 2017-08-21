@@ -2,22 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
 
 class TvshowController extends Controller{
 
-    public $token;
-
     public function __construct(){
-        $this->token = "bonjour";
-
-
-        $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'https://api.github.com/user', [
-            'auth' => ['user', 'pass']
-        ]);
-
-        echo $res->getStatusCode();
     }
 
     /**
@@ -31,13 +19,26 @@ class TvshowController extends Controller{
             $genres = explode(',', $genre);
         }else{
             $genres = $genre;
-        }
 
-        echo  "Regarder des séries ? <br>";
+            $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?genre='.$genres);
 
-        foreach ($genres as $val) {
-            echo $val;
-            echo "<br>";
+            $data_tvshow = json_decode($data_tvshow_url);
+
+            $shows_by_genre = array();
+
+            // For each day of the week
+            for ($i=0; $i < count($data_tvshow); $i++) {
+
+                $name = $data_tvshow[$i]->name;
+                $resume = $data_tvshow[$i]->resume;
+
+
+                $show = ["name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume];
+
+                array_push($shows_by_genre, $show);
+            }
+            
+            return ['id' => 4, 'result' => ['genre' => $genre, 'shows' => $shows_by_genre]];
         }
     }
 
