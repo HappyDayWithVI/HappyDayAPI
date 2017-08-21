@@ -11,7 +11,7 @@ Step by step tutorial to get the API running
 First, you need to install php.
 
 ```
-sudo apt-get install php
+sudo apt-get install php5-common libapache2-mod-php5 php5-cli
 ```
 
 Be sure to have, mbstring and dom extension install.
