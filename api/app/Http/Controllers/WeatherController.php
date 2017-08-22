@@ -18,15 +18,18 @@ class WeatherController extends Controller
         $data_weather_url = file_get_contents(WEATHER_BASEURL.'weather?q='.$ville.',fr&appid='.WEATHER_KEY.'&units=metric&lang=fr');
         $data_weather = json_decode($data_weather_url);
 
+        // var_dump($data_weather);
+
         // select city name, desc, temp and group
         $city_name = $data_weather->name;
         $desc_weather = $data_weather->weather[0]->description;
         $actual_temp = $data_weather->main->temp;
+        $icon = $data_weather->weather[0]->icon;
 
         // group will be used to select activity
         $group_weather = substr($data_weather->weather[0]->id, 0, 1);
         
-        return ['id' => 2, 'result' => ['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather]];
+        return ['id' => "1-1", 'result' => ['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather, 'icon' => $icon]];
     }
 
     public function getWeeklyWeather($ville){
@@ -35,14 +38,13 @@ class WeatherController extends Controller
         
         $data_weather = json_decode($data_weather_url);
 
-
         $week_weather = array();
 
         // For each day of the week
         for ($i=0; $i < count($data_weather->list); $i++) {
 
             // Get the day, the temp and weather desc
-            $weather = ["date" => date("d-m-Y", $data_weather->list[$i]->dt), "temp" => $data_weather->list[$i]->temp->day, "desc" => $data_weather->list[$i]->weather[0]->description];
+            $weather = ["date" => date("d-m-Y", $data_weather->list[$i]->dt), "temp" => $data_weather->list[$i]->temp->day, "desc" => $data_weather->list[$i]->weather[0]->description, 'icon' => $data_weather->list[$i]->weather[0]->icon];
 
             array_push($week_weather, $weather);
         }
@@ -50,6 +52,6 @@ class WeatherController extends Controller
         // select city name
         $city_name = $data_weather->city->name;        
 
-        return ['id' => 3, 'result' => ['city' => $city_name, 'week' => $week_weather]];
+        return ['id' => "1-2", 'result' => ['city' => $city_name, 'week' => $week_weather]];
     }
 }
