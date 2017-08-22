@@ -28,11 +28,7 @@ class TvshowController extends Controller{
 
             for ($i=0; $i < count($data_tvshow); $i++) {
 
-                $name = $data_tvshow[$i]->name;
-                $resume = $data_tvshow[$i]->resume;
-
-
-                $show = ["name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume];
+                $show = ["name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image];
 
                 array_push($shows_by_genre, $show);
             }
