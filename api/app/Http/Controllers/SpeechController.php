@@ -13,12 +13,28 @@ class SpeechController extends Controller{
     		$message_item = explode(" ", $message);
 
     		if (in_array("meteo", $message_item)) {
-    			if (in_array("a", $message_item)) {
-    				$pos_city = array_search("a", $message_item)+1;
+    			if (in_array("a", $message_item) || in_array("à", $message_item)) {
+                    if (in_array("a", $message_item) {
+                        $pos_city = array_search("a", $message_item)+1;
+                    }else{
+                        $pos_city = array_search("à", $message_item)+1;
+                    }
+    				
     				$city = $message_item[$pos_city];
     			}else{
-    				// get default user city
-    				$city = "Lyon";
+    				if ((count($message_item) > 1 && !in_array("semaine", $message_item) || count($message_item) > 2 && in_array("semaine", $message_item))) {
+
+                        $city = ""
+
+                        foreach ($message_item as $el) {
+                            if ($el != "semaine" && $el != "meteo" ) {
+                                $city .= $el." ";
+                            }
+                        }                      
+                    }else{
+                        // get default user city
+                        $city = "Lyon";
+                    }
     			}
 
     			if (in_array("semaine", $message_item)) {
