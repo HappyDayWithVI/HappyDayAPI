@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-class SpeechController extends WeatherController{
+use App\Http\Controllers\TvshowController;
+
+class SpeechController extends Controller{
 
     public function interpretSpeech($message){
     	// function will return general display or not
@@ -22,16 +24,27 @@ class SpeechController extends WeatherController{
     			}
 
     			if (in_array("semaine", $message_item)) {
-    				$res = $this->getWeeklyWeather($city);
+    				$res = app('App\Http\Controllers\WeatherController')->getWeeklyWeather($city);
     			}else{
-    				$res = $this->getWeather($city);
+    				$res = app('App\Http\Controllers\WeatherController')->getWeather($city);
     			}
 
     			return response()->json($res);
+    		}else if(in_array("serie", $message_item)){
+                if (in_array("genre", $message_item)) {
 
-    		
+                    foreach ($message_item as $word) {
+                        if ($word != "genre" && $word != "serie" ) {
+                            $genre = $word;
+                            break;
+                        }
+                    }
 
-    		}
+                    $res = app('App\Http\Controllers\TvshowController')->getTvshowByGenre($genre);
+
+                    return response()->json($res);
+                }
+            }
     	}
 
         // if general get weather
