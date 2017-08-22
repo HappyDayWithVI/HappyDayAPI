@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\TvshowController;
-
 class SpeechController extends Controller{
 
     public function interpretSpeech($message){
@@ -41,6 +39,18 @@ class SpeechController extends Controller{
                     }
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByGenre($genre);
+
+                    return response()->json($res);
+                }else{
+                    $name = "";
+                    foreach ($message_item as $word) {
+                        if ($word != "serie" ) {
+                            $name .= $word."+";
+                        }
+                    }
+
+
+                    $res = app('App\Http\Controllers\TvshowController')->getTvshowByName($name);
 
                     return response()->json($res);
                 }
