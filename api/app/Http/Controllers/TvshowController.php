@@ -62,7 +62,7 @@ class TvshowController extends Controller{
             array_push($shows_by_name, $show);
         }
         
-        return ['id' => '2-2', 'result' => ['name' => $nameSearch, 'shows' => $shows_by_name]];
+        return ['id' => '2-2', 'result' => ['name' => str_replace("%20", " ", $nameSearch), 'shows' => $shows_by_name]];
     }
 
     
