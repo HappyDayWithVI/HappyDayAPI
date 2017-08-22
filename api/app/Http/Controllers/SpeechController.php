@@ -49,6 +49,7 @@ class SpeechController extends Controller{
                         }
                     }
 
+                    $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByName($name);
 

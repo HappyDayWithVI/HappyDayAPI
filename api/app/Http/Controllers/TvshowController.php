@@ -42,12 +42,12 @@ class TvshowController extends Controller{
     }
 
     public function getTvshowByName($nameSearch){
-        $nameSearch = str_replace("+", "%20", $nameSearch);
-
+        $nameSearch = str_replace("+", " ", $nameSearch);
         $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?serie='.$nameSearch);
 
-
         $data_tvshow = json_decode($data_tvshow_url);
+
+        // var_dump($data_tvshow);
 
         $shows_by_name = array();
 
@@ -62,7 +62,7 @@ class TvshowController extends Controller{
             array_push($shows_by_name, $show);
         }
         
-        return ['id' => '2-2', 'result' => ['name' => $str_replace("%20", " ", $nameSearch), 'shows' => $shows_by_name]];
+        return ['id' => '2-2', 'result' => ['name' => $nameSearch, 'shows' => $shows_by_name]];
     }
 
     
