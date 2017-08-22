@@ -38,7 +38,7 @@ class TvshowController extends Controller{
                 array_push($shows_by_genre, $show);
             }
             
-            return ['id' => 4, 'result' => ['genre' => $genre, 'shows' => $shows_by_genre]];
+            return ['id' => '2-1', 'result' => ['genre' => $genre, 'shows' => $shows_by_genre]];
         }
     }
 
