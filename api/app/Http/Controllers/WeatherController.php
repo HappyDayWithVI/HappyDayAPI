@@ -29,7 +29,7 @@ class WeatherController extends Controller
         // group will be used to select activity
         $group_weather = substr($data_weather->weather[0]->id, 0, 1);
         
-        return ['id' => "1-1", 'result' => ['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather, 'icon' => $icon]];
+        return ['id' => "1-1", 'result' => ['city' => $city_name, 'temp' => $actual_temp, 'desc' => $desc_weather, 'icon' => substr($icon, 0, -1)]];
     }
 
     public function getWeeklyWeather($ville){
@@ -44,7 +44,7 @@ class WeatherController extends Controller
         for ($i=0; $i < count($data_weather->list); $i++) {
 
             // Get the day, the temp and weather desc
-            $weather = ["date" => date("d-m-Y", $data_weather->list[$i]->dt), "temp" => $data_weather->list[$i]->temp->day, "desc" => $data_weather->list[$i]->weather[0]->description, 'icon' => $data_weather->list[$i]->weather[0]->icon];
+            $weather = ["date" => date("d-m-Y", $data_weather->list[$i]->dt), "temp" => $data_weather->list[$i]->temp->day, "desc" => $data_weather->list[$i]->weather[0]->description, 'icon' => substr($data_weather->list[$i]->weather[0]->icon, 0, -1)];
 
             array_push($week_weather, $weather);
         }

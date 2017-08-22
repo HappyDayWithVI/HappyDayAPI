@@ -43,7 +43,6 @@ class SpeechController extends Controller{
     				$res = app('App\Http\Controllers\WeatherController')->getWeather($city);
     			}
 
-    			return response()->json($res);
     		}else if(in_array("serie", $message_item)){
                 if (in_array("genre", $message_item)) {
 
@@ -55,8 +54,6 @@ class SpeechController extends Controller{
                     }
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByGenre($genre);
-
-                    return response()->json($res);
                 }else{
                     $name = "";
                     foreach ($message_item as $word) {
@@ -68,11 +65,11 @@ class SpeechController extends Controller{
                     $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByName($name);
-
-                    return response()->json($res);
                 }
             }
     	}
+
+        return response()->json($res);
 
         // if general get weather
     }
