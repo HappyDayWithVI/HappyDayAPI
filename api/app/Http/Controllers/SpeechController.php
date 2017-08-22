@@ -14,7 +14,7 @@ class SpeechController extends Controller{
 
     		if (in_array("meteo", $message_item)) {
     			if (in_array("a", $message_item) || in_array("à", $message_item)) {
-                    if (in_array("a", $message_item) {
+                    if (in_array("a", $message_item)) {
                         $pos_city = array_search("a", $message_item)+1;
                     }else{
                         $pos_city = array_search("à", $message_item)+1;
@@ -24,7 +24,7 @@ class SpeechController extends Controller{
     			}else{
     				if ((count($message_item) > 1 && !in_array("semaine", $message_item) || count($message_item) > 2 && in_array("semaine", $message_item))) {
 
-                        $city = ""
+                        $city = "";
 
                         foreach ($message_item as $el) {
                             if ($el != "semaine" && $el != "meteo" ) {
