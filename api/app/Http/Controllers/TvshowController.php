@@ -42,7 +42,7 @@ class TvshowController extends Controller{
     }
 
     public function getTvshowByName($nameSearch){
-        $nameSearch = str_replace("+", " ", $nameSearch);
+        $nameSearch = str_replace("+", "%20", $nameSearch);
         $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?serie='.$nameSearch);
 
         $data_tvshow = json_decode($data_tvshow_url);
