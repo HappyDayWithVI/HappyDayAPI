@@ -28,3 +28,5 @@ $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
 
 $app->get('user/{id}', 'UserController@show');
 
+//Music
+$app->get('music/new_releases/{country}/{limit}', 'MusicController@getNewRealease');
