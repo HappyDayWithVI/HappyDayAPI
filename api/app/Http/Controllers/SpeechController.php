@@ -54,6 +54,27 @@ class SpeechController extends Controller{
                     }
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByGenre($genre);
+                }else if (in_array("personnage", $message_item)) {
+
+                    $name = "";
+                    foreach ($message_item as $word) {
+                        if ($word != "personnage" && $word != "serie" ) {
+                            $name .= $word."+";
+                        }
+                    }
+
+                    $res = app('App\Http\Controllers\TvshowController')->getCharacterOfTvshowByName($name);
+                }else if (in_array("avec", $message_item)) {
+
+                    $acteur = "";
+
+                    foreach ($message_item as $word) {                        
+                        if ($word != "avec" && $word != "serie" ) {
+                            $acteur .= $word."+";
+                        }
+                    }
+
+                    $res = app('App\Http\Controllers\TvshowController')->getTvshowByActor($acteur);
                 }else{
                     $name = "";
                     foreach ($message_item as $word) {
