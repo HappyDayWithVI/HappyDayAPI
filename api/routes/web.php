@@ -25,6 +25,8 @@ $app->get('weather/{city}/week', 'WeatherController@getWeeklyWeather');
 // tvshow
 $app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
 $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
+$app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByName');
+$app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
 $app->get('user/{id}', 'UserController@show');
 
