@@ -7,3 +7,4 @@ define("WEATHER_BASEURL",     "http://api.openweathermap.org/data/2.5/");
 define('MOVIES_KEY', 'ca23af59f66f1506ef3c055712aa6341');
 define('MOVIES_BASEURL', 'https://api.themoviedb.org/3/');
 
+define('LANG_CODE', 'fr-FR');
