@@ -26,4 +26,7 @@ $app->get('user/{id}', 'UserController@show');
 
 // Films
 $app->get('movies', 'MoviesController@getMovies');
+$app->get('movies/genres', 'MoviesController@getGenres');
+$app->get('movies/genre/{id}', 'MoviesController@getGenres');
 $app->get('movie/{title}', 'MoviesController@getMovieByTitle');
+$app->get('movie/actors/{id}', 'MoviesController@getActorsByID');

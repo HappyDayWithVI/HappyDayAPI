@@ -7,6 +7,25 @@ use App\Movies;
 class MoviesController extends Controller
 {
 
+    public function getGenres($id = false)
+    {
+         $data_movie_url = file_get_contents(MOVIES_BASEURL .'genre/movie/list?api_key=ca23af59f66f1506ef3c055712aa6341&language='. LANG_CODE);
+         $data_movie = json_decode($data_movie_url);
+
+         $data = array();
+
+         foreach ($data_movie->genres as $key => $value) {
+             $data[ $value->id ] = $value->name;
+         }
+
+         if( $id && isset( $data[$id] ) ){
+            return response()->json( array('name' => $data[$id], 'id' => $id) );
+         }else{
+             return response()->json( $data );
+         }
+
+    }
+
     public function getMovies()
     {
         $data_movie_url = file_get_contents(MOVIES_BASEURL .'discover/movie?api_key='. MOVIES_KEY .'&sort_by=popularity.desc&include_video=true&year=2018&language='. LANG_CODE);
@@ -24,6 +43,15 @@ class MoviesController extends Controller
 
         return response()->json($data_movie);
     }
+
+    public function getActorsByID($id){
+        $id = urldecode( $id );
+        $data_movie_url = file_get_contents(MOVIES_BASEURL .'movie/'. $id .'/credits?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
+        $data_movie = json_decode($data_movie_url);
+
+        return response()->json($data_movie->cast);
+    }
+
 
     /**
      * Retrieve the user for the given ID.
