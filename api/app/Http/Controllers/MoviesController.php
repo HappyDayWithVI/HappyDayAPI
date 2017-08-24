@@ -44,21 +44,62 @@ class MoviesController extends Controller
         return response()->json($data_movie);
     }
 
-    public function getActorsByID($id){
+    public function getActorByMovieName($title){
+        $data_to_get_id_url = file_get_contents(MOVIES_BASEURL .'search/movie?api_key='. MOVIES_KEY .'&language='. LANG_CODE .'&query='. ucfirst($title));
+        $data_to_get_id_url = json_decode($data_to_get_id_url);
+        $id = $data_to_get_id_url->results[0]->id;
+        
         $id = urldecode( $id );
+
+
         $data_movie_url = file_get_contents(MOVIES_BASEURL .'movie/'. $id .'/credits?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
         $data_movie = json_decode($data_movie_url);
 
-        return response()->json($data_movie->cast);
+
+        $characters = array();
+
+        $c = 1;
+
+
+       for ($i=0; $i < count($data_movie->cast); $i++) {
+
+
+           $character = ["id" => $c, "name_actor" => $data_movie->cast[$i]->name, "name_character" => $data_movie->cast[$i]->character, "image" => "https://image.tmdb.org/t/p/w300_and_h450_bestv2/".$data_movie->cast[$i]->profile_path];
+
+           array_push($characters, $character);
+           $c++;
+       }
+
+
+       return ['id' => '3-2', 'result' => ["movie_data" => ["movie" => $data_to_get_id_url->results[0]->title, "image" => "https://image.tmdb.org/t/p/w780/".$data_to_get_id_url->results[0]->backdrop_path], "character_data" => $characters]]; 
+
+        
     }
 
+    public function getMovieByActor($name){
+        $data_actor_url = file_get_contents(MOVIES_BASEURL .'search/person?api_key='. MOVIES_KEY .'&language='. LANG_CODE .'&query='. ucfirst($name).'&include_adult=false');
+        $data_actor = json_decode($data_actor_url);
 
-    /**
-     * Retrieve the user for the given ID.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+        $id_actor = $data_actor->results[0]->id;
+
+        $data_movie_of_actor_url = file_get_contents(MOVIES_BASEURL .'person/'.$id_actor.'/movie_credits?api_key='. MOVIES_KEY .'&language='. LANG_CODE.'&include_adult=false');
+        $data_movie_of_actor = json_decode($data_movie_of_actor_url);
+
+        // var_dump($data_movie_of_actor->cast);
+
+        $roles = array();
+        $m = 1;
+
+        for ($i=0; $i < count($data_movie_of_actor->cast); $i++) {
+
+            $role = ["id" => $m, "movie" => $data_movie_of_actor->cast[$i]->title, "character" => $data_movie_of_actor->cast[$i]->character, "image" => "https://image.tmdb.org/t/p/w780/".$data_movie_of_actor->cast[$i]->poster_path];
+
+            array_push($roles, $role);
+            $m++;
+        }
+
+        return ['id' => '2-4', 'result' => ["actor" => str_replace("%20", " ", $name), "role_data" => $roles]];
+    }
 
 
     public function getMovieByTitle($title){
@@ -70,17 +111,23 @@ class MoviesController extends Controller
         $result = '';
         $movies = array();
 
+        $m = 1;
+
         foreach ($data as $key => $value) {
 
-            $movie = ["name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185/".$value->poster_path, "resume" => $value->overview];
+            if ($value->overview != "" && $value->adult == false) {            
 
-            if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
-                $value->release_date = 'INCONNU';
-            }else{
-                $value->release_date = $this->getDate($value->release_date);
+                $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
+
+                if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
+                    $value->release_date = 'INCONNU';
+                }else{
+                    $value->release_date = $this->getDate($value->release_date);
+                }
+
+                array_push($movies, $movie);
+                $m++;
             }
-
-            array_push($movies, $movie);
         }
 
         // return response()->json($data_movie);

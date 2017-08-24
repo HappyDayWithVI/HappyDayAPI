@@ -32,8 +32,10 @@ $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 $app->get('movies', 'MoviesController@getMovies');
 $app->get('movies/genres', 'MoviesController@getGenres');
 $app->get('movies/genre/{id}', 'MoviesController@getGenres');
-$app->get('movie/{title}', 'MoviesController@getMovieByTitle');
-$app->get('movie/actors/{id}', 'MoviesController@getActorsByID');
+$app->get('movie/{title}', 'MoviesController@getMovieByTitle'); // ok
+$app->get('movie/cast/{title}', 'MoviesController@getActorByMovieName'); // ok
+$app->get('movie/actor/{name}', 'MoviesController@getMovieByActor'); // ok
+
 
 
 // user
