@@ -1039,3 +1039,63 @@ Stack trace:
 #14 /var/www/poject/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #15 /var/www/poject/public/index.php(28): Laravel\Lumen\Application->run()
 #16 {main}  
+[2017-08-24 09:52:07] lumen.ERROR: exception 'ErrorException' with message 'Use of undefined constant TVSHOW_BASEURL - assumed 'TVSHOW_BASEURL'' in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/TvshowController.php:23
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/TvshowController.php(23): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Use of undefine...', '/home/apprenant...', 23, Array)
+#1 [internal function]: App\Http\Controllers\TvshowController->getTvshowByGenre('horreur')
+#2 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(30): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(708): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\TvshowController), 'getTvshowByGenr...', Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(533): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-24 09:52:29] lumen.ERROR: exception 'ErrorException' with message 'Use of undefined constant TVSHOW_BASEURL - assumed 'TVSHOW_BASEURL'' in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/TvshowController.php:24
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/TvshowController.php(24): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Use of undefine...', '/home/apprenant...', 24, Array)
+#1 [internal function]: App\Http\Controllers\TvshowController->getTvshowByGenre('horreur')
+#2 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(30): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(708): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\TvshowController), 'getTvshowByGenr...', Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(533): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-24 10:03:54] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot use object of type stdClass as array' in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MoviesController.php:75
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-24 10:18:33] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';', expecting ']'' in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MoviesController.php:88
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-24 10:18:38] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';', expecting ']'' in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MoviesController.php:88
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-24 10:18:40] lumen.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';', expecting ']'' in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MoviesController.php:88
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  

@@ -59,36 +59,32 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return Response
      */
+
+
     public function getMovieByTitle($title){
         // connect to api + get data
         $data_movie_url = file_get_contents(MOVIES_BASEURL .'search/movie?api_key='. MOVIES_KEY .'&language='. LANG_CODE .'&query='. ucfirst($title) );
         $data_movie = json_decode($data_movie_url);
 
-
-
-        // select city name, desc, temp and group
-        // $city_name = $data_movie->name;
-        // $desc_movie = $data_movie->movie[0]->description;
-        // $actual_temp = $data_movie->main->temp;
-
-        // // group will be used to select activity
-        // $group_movie = substr($data_movie->movie[0]->id, 0, 1);
-
         $data = $data_movie->results;
         $result = '';
+        $movies = array();
 
         foreach ($data as $key => $value) {
+
+            $movie = ["name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185/".$value->poster_path, "resume" => $value->overview];
+
             if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
                 $value->release_date = 'INCONNU';
             }else{
                 $value->release_date = $this->getDate($value->release_date);
             }
+
+            array_push($movies, $movie);
         }
 
-        // https://api.themoviedb.org/3/genre/movie/list?api_key=ca23af59f66f1506ef3c055712aa6341&language=fr
-
-        // var_dump( $data, $data_movie, $result );
-        return response()->json($data_movie);
+        // return response()->json($data_movie);
+        return ['id' => '3-1', 'result' => [$movies]];
     }
 
     private function getDate($date_string)

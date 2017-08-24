@@ -22,7 +22,11 @@ $app->get('message', 'SpeechController@interpretSpeech');
 $app->get('weather/{city}', 'WeatherController@getWeather');
 $app->get('weather/{city}/week', 'WeatherController@getWeeklyWeather');
 
-$app->get('user/{id}', 'UserController@show');
+// tvshow
+$app->get('tvshow/genre/{genre}', 'TvshowController@getTvshowByGenre');
+$app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
+$app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByName');
+$app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
 // Films
 $app->get('movies', 'MoviesController@getMovies');
@@ -30,3 +34,7 @@ $app->get('movies/genres', 'MoviesController@getGenres');
 $app->get('movies/genre/{id}', 'MoviesController@getGenres');
 $app->get('movie/{title}', 'MoviesController@getMovieByTitle');
 $app->get('movie/actors/{id}', 'MoviesController@getActorsByID');
+
+
+// user
+$app->get('user/{id}', 'UserController@show');
