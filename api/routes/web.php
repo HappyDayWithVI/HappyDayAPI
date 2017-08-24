@@ -28,5 +28,10 @@ $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
 $app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByName');
 $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
+
+// book
+$app->get('book/title/{title}', 'BookController@getBookByName');
+
+// user
 $app->get('user/{id}', 'UserController@show');
 
