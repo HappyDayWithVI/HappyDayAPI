@@ -16,7 +16,7 @@ $app->get('/', function () use ($app) {
 });
 
 // speech
-$app->get('message', 'SpeechController@interpretSpeech');
+$app->get('message/{message}', 'SpeechController@interpretSpeech');
 
 // weather
 $app->get('weather/{city}', 'WeatherController@getWeather');
