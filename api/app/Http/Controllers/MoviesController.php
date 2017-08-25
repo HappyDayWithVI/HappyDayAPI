@@ -157,9 +157,6 @@ class MoviesController extends Controller
         $data_movies_url = file_get_contents(MOVIES_BASEURL .'genre/'.$id.'/movies?api_key='. MOVIES_KEY .'&language='. LANG_CODE.'&language=fr-FR&include_adult=false&sort_by=created_at.asc');
 
         $data_movies = json_decode($data_movies_url);
-        // echo "<pre>";
-        // var_dump($data_movies);
-        // echo "</pre>";
 
         $movies = array();
         $m = 1;
