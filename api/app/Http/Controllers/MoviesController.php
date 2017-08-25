@@ -122,6 +122,50 @@ class MoviesController extends Controller
         foreach ($data as $key => $value) {
 
             if ($value->overview != "" && $value->adult == false) {            
+                echo "<pre>";
+                var_dump($value);
+                echo "</pre>";
+                $movie_id = $value->id;
+
+                $data_video_url = file_get_contents(MOVIES_BASEURL .'movie/'.$movie_id.'/videos?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
+                $data_video = json_decode($data_video_url);
+                
+                // echo "<pre>";
+                // var_dump($data_video);
+                // echo "</pre>";
+                
+                if (count($data_video->results) == 0) {
+
+                    // If no video has been found on the french version, search in other language
+                    $data_video_url = file_get_contents(MOVIES_BASEURL .'movie/'.$movie_id.'/videos?api_key='. MOVIES_KEY);
+                    $data_video = json_decode($data_video_url);
+
+                    if (count($data_video->results) == 0) {
+                        $video = false;
+                    }
+                }
+
+                if (!isset($video)) {
+                    foreach ($data_video->results as $video) {
+                        $site = $video->site;
+                        echo $site."<br>";
+                        if ($video->site == "YouTube" && $video->type == "Trailer") {
+                            $video = "https://www.youtube.com/embed/".$video->key;
+                            break;
+                        }
+                    }
+                }
+
+                foreach ($value->genre_ids as $genre) {
+                    echo $this->getGenres($genre);
+
+                }
+
+                $details = ["video" => $video, "rating" => $value->vote_average, "year" => substr($value->release_date, 0, 4)];
+                echo "<pre>";
+                var_dump($details);
+                echo "</pre>";
+
 
                 $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
 
