@@ -6,7 +6,14 @@ class SpeechController extends Controller{
 
     public function interpretSpeech($message){
     	// function will return general display or not
-    	$message = str_replace("%20", " ", $message);
+
+
+
+        // Il faut faire un urldecode() 
+    	// $message = str_replace("%20", " ", $message);
+        $message = urldecode( $message );
+
+
     	if ($message == "que puis-je faire") {
     		echo "Liste d'activité";
     	}else{

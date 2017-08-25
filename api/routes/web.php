@@ -16,7 +16,7 @@ $app->get('/', function () use ($app) {
 });
 
 // speech
-$app->get('message/{message}', 'SpeechController@interpretSpeech');
+$app->get('message', 'SpeechController@interpretSpeech');
 
 // weather
 $app->get('weather/{city}', 'WeatherController@getWeather');
@@ -28,5 +28,16 @@ $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
 $app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByName');
 $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
-$app->get('user/{id}', 'UserController@show');
+// Films
+$app->get('movies', 'MoviesController@getMovies');
+$app->get('movies/genres', 'MoviesController@getGenres');
+// $app->get('movies/genre/{id}', 'MoviesController@getGenres');
+$app->get('movies/genre/{name}', 'MoviesController@getMoviesByGenre');
+$app->get('movie/{title}', 'MoviesController@getMovieByTitle'); // ok
+$app->get('movie/cast/{title}', 'MoviesController@getActorByMovieName'); // ok
+$app->get('movie/actor/{name}', 'MoviesController@getMovieByActor'); // ok
 
+
+
+// user
+$app->get('user/{id}', 'UserController@show');
