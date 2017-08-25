@@ -49,7 +49,7 @@ class MoviesController extends Controller
             }
         }
 
-        return ['id' => '3-1', 'result' => ["movies" => $movies]]; 
+        return ['id' => '3-1', 'result' => $movies]; 
     }
 
     public function getActorByMovieName($title){
@@ -104,7 +104,7 @@ class MoviesController extends Controller
             $m++;
         }
 
-        return ['id' => '3-4', 'result' => ["actor" => str_replace("%20", " ", $name), "role_data" => $roles]];
+        return ['id' => '3-3', 'result' => ["actor" => str_replace("%20", " ", $name), "role_data" => $roles]];
     }
 
 
@@ -137,7 +137,7 @@ class MoviesController extends Controller
         }
 
         // return response()->json($data_movie);
-        return ['id' => '3-2', 'result' => [$movies]];
+        return ['id' => '3-4', 'result' => $movies];
     }
 
     public function getMoviesByGenre($genre){
@@ -180,7 +180,7 @@ class MoviesController extends Controller
             }
         }
 
-        return ['id' => '3-5', 'result' => [$movies]];
+        return ['id' => '3-5', 'result' => $movies];
 
     }
 
