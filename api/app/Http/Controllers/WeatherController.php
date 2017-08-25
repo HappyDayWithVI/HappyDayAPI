@@ -34,6 +34,7 @@ class WeatherController extends Controller {
         // group will be used to select activity
         $group_weather = substr($data_weather->weather[0]->id, 0, 1);
         
+
         return ['id' => "1-1", 'result' => ['city' => $city_name, "date" => date("d-m-Y"), 'day' => $this->week_day_fr[date('N')-1], 'short_day' => $this->week_day_fr_short[date('N')-1], 'temp' => $actual_temp, 'max_temp' => round($data_weather->main->temp_max), 'min_temp' => round($data_weather->main->temp_min), 'desc' => $desc_weather, 'icon' => substr($icon, 0, -1)]];
     }
 
@@ -55,8 +56,8 @@ class WeatherController extends Controller {
         }
 
         // select city name
-        $city_name = $data_weather->city->name;        
-
+        $city_name = $data_weather->city->name;    
+        
         return ['id' => "1-2", 'result' => ['city' => $city_name, 'week' => $week_weather]];
     }
 }
