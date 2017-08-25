@@ -13,3 +13,7 @@ define("TVSHOW_BASEURL",   "http://api.plannr.fr/");
 // MOVIES API
 define('MOVIES_KEY', 'ca23af59f66f1506ef3c055712aa6341');
 define('MOVIES_BASEURL', 'https://api.themoviedb.org/3/');
+
+// BOOK API
+define("BOOK_BASEURL",   "https://www.goodreads.com/");
+define("BOOK_KEY",		"KEvJO5MrHpEYao9Z0lzw");
