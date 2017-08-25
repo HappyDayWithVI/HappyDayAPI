@@ -7,41 +7,49 @@ use App\Movies;
 class MoviesController extends Controller
 {
 
-    public function getGenres($id = false)
-    {
-         $data_movie_url = file_get_contents(MOVIES_BASEURL .'genre/movie/list?api_key=ca23af59f66f1506ef3c055712aa6341&language='. LANG_CODE);
-         $data_movie = json_decode($data_movie_url);
+    public function getGenres($id = false){
+        $data_movie_url = file_get_contents(MOVIES_BASEURL .'genre/movie/list?api_key=ca23af59f66f1506ef3c055712aa6341&language='. LANG_CODE);
+        $data_movie = json_decode($data_movie_url);
 
-         $data = array();
+        $data = array();
 
-         foreach ($data_movie->genres as $key => $value) {
-             $data[ $value->id ] = $value->name;
-         }
+        foreach ($data_movie->genres as $key => $value) {
+            $data[ $value->id ] = $value->name;
+        }
 
-         if( $id && isset( $data[$id] ) ){
+        if( $id && isset( $data[$id] ) ){
             return response()->json( array('name' => $data[$id], 'id' => $id) );
-         }else{
-             return response()->json( $data );
-         }
-
+        }else{
+            return response()->json( $data );
+        }
     }
 
-    public function getMovies()
-    {
+    public function getMovies(){
         $data_movie_url = file_get_contents(MOVIES_BASEURL .'discover/movie?api_key='. MOVIES_KEY .'&sort_by=popularity.desc&include_video=true&year=2018&language='. LANG_CODE);
         $data_movie = json_decode($data_movie_url);
 
         $data = $data_movie->results;
 
+        $m = 1;
+        $movies = array();
+
         foreach ($data as $key => $value) {
-            if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
-                $value->release_date = 'INCONNU';
-            }else{
-                $value->release_date = $this->getDate($value->release_date);
+
+            if ($value->overview != "" && $value->adult == false) {            
+                $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
+
+                if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
+                    $value->release_date = 'INCONNU';
+                }else{
+                    $value->release_date = $this->getDate($value->release_date);
+                }
+
+                array_push($movies, $movie);
+                $m++;
             }
         }
 
-        return response()->json($data_movie);
+        return ['id' => '3-1', 'result' => ["movies" => $movies]]; 
     }
 
     public function getActorByMovieName($title){
@@ -85,8 +93,6 @@ class MoviesController extends Controller
         $data_movie_of_actor_url = file_get_contents(MOVIES_BASEURL .'person/'.$id_actor.'/movie_credits?api_key='. MOVIES_KEY .'&language='. LANG_CODE.'&include_adult=false');
         $data_movie_of_actor = json_decode($data_movie_of_actor_url);
 
-        // var_dump($data_movie_of_actor->cast);
-
         $roles = array();
         $m = 1;
 
@@ -98,7 +104,7 @@ class MoviesController extends Controller
             $m++;
         }
 
-        return ['id' => '2-4', 'result' => ["actor" => str_replace("%20", " ", $name), "role_data" => $roles]];
+        return ['id' => '3-4', 'result' => ["actor" => str_replace("%20", " ", $name), "role_data" => $roles]];
     }
 
 
@@ -131,11 +137,57 @@ class MoviesController extends Controller
         }
 
         // return response()->json($data_movie);
-        return ['id' => '3-1', 'result' => [$movies]];
+        return ['id' => '3-2', 'result' => [$movies]];
     }
 
-    private function getDate($date_string)
-    {
+    public function getMoviesByGenre($genre){
+        // echo $genre;
+
+        // echo $this->getGenres();
+
+        $data_genre_url = file_get_contents(MOVIES_BASEURL .'genre/movie/list?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
+        $data_genre = json_decode($data_genre_url);
+
+        foreach ($data_genre->genres as $possible_genre) {
+            if (strtolower($possible_genre->name) == $genre) {
+                $id = $possible_genre->id;
+            }
+        }
+
+        $data_movies_url = file_get_contents(MOVIES_BASEURL .'genre/'.$id.'/movies?api_key='. MOVIES_KEY .'&language='. LANG_CODE.'&language=fr-FR&include_adult=false&sort_by=created_at.asc');
+
+        $data_movies = json_decode($data_movies_url);
+        // echo "<pre>";
+        // var_dump($data_movies);
+        // echo "</pre>";
+
+        $movies = array();
+        $m = 1;
+
+        foreach ($data_movies->results as $key => $value) {
+
+            // var_dump($value);
+
+            if ($value->overview != "" && $value->adult == false) {            
+
+                $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
+
+                if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
+                    $value->release_date = 'INCONNU';
+                }else{
+                    $value->release_date = $this->getDate($value->release_date);
+                }
+
+                array_push($movies, $movie);
+                $m++;
+            }
+        }
+
+        return ['id' => '3-5', 'result' => [$movies]];
+
+    }
+
+    private function getDate($date_string){
         $date = explode('-', $date_string);
         $month = strtolower(date('F', strtotime($date_string)));
         switch ($month) {
