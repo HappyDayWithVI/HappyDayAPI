@@ -31,7 +31,10 @@ $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
 // book
 $app->get('book/title/{title}', 'BookController@getBookByName');
+$app->get('book/author/{author}', 'BookController@getBookByAuthor');
+$app->get('book/category/{category}', 'BookController@getBookByCategory');
+$app->get('book/isbn/{isbn}', 'BookController@getBookByISBN');
+$app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
 
 // user
 $app->get('user/{id}', 'UserController@show');
-
