@@ -16,7 +16,7 @@ $app->get('/', function () use ($app) {
 });
 
 // speech
-$app->get('message', 'SpeechController@interpretSpeech');
+$app->get('message/{message}', 'SpeechController@interpretSpeech');
 
 // weather
 $app->get('weather/{city}', 'WeatherController@getWeather');
@@ -28,7 +28,7 @@ $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
 $app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByName');
 $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
-// Films
+// Movies
 $app->get('movies', 'MoviesController@getMovies');
 $app->get('movies/genres', 'MoviesController@getGenres');
 // $app->get('movies/genre/{id}', 'MoviesController@getGenres');
@@ -38,6 +38,12 @@ $app->get('movie/cast/{title}', 'MoviesController@getActorByMovieName'); // ok
 $app->get('movie/actor/{name}', 'MoviesController@getMovieByActor'); // ok
 
 
+// book
+$app->get('book/title/{title}', 'BookController@getBookByName');
+$app->get('book/author/{author}', 'BookController@getBookByAuthor');
+$app->get('book/category/{category}', 'BookController@getBookByCategory');
+$app->get('book/isbn/{isbn}', 'BookController@getBookByISBN');
+$app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
 
 // user
 $app->get('user/{id}', 'UserController@show');

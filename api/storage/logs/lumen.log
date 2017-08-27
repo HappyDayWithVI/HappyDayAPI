@@ -1899,3 +1899,288 @@ Stack trace:
 #15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #17 {main}  
+[2017-08-27 19:29:50] lumen.ERROR: ErrorException: Trying to get property of non-object in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:75
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(75): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Trying to get p...', 'C:\\wamp\\www\\Hap...', 75, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMovies()
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovies', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 19:39:00] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:11
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 19:51:28] lumen.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Cannot access protected property Illuminate\Http\JsonResponse::$data in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:75
+Stack trace:
+#0 [internal function]: App\Http\Controllers\MoviesController->getMovies()
+#1 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#5 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovies', Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#14 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#15 {main}  
+[2017-08-27 19:53:04] lumen.ERROR: ErrorException: Use of undefined constant data - assumed 'data' in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:75
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(75): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Use of undefine...', 'C:\\wamp\\www\\Hap...', 75, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMovies()
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovies', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 19:59:10] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:63
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:16:57] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:65
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:37:14] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:39
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:39:20] lumen.ERROR: ErrorException: Undefined variable: details in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:82
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(82): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Hap...', 82, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMovies()
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovies', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 20:42:21] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:39
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:47:15] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:39
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:47:19] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:11
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:50:01] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:39
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 20:52:11] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:39
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 21:25:53] lumen.ERROR: ErrorException: Undefined variable: movie_id in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:253
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(253): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Hap...', 253, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMoviesByGenre('horreur')
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMoviesByGenr...', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 21:27:19] lumen.ERROR: ErrorException: Undefined variable: movie_id in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:252
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(252): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Hap...', 252, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMoviesByGenre('horreur')
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMoviesByGenr...', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 21:28:54] lumen.ERROR: ErrorException: Undefined variable: movie_id in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:252
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(252): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Hap...', 252, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMoviesByGenre('horreur')
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMoviesByGenr...', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 21:35:01] lumen.ERROR: ErrorException: Undefined variable: movie_id in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:252
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(252): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', 'C:\\wamp\\www\\Hap...', 252, Array)
+#1 [internal function]: App\Http\Controllers\MoviesController->getMoviesByGenre('horreur')
+#2 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMoviesByGenr...', Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-08-27 21:38:47] lumen.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 120 seconds exceeded in C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php:43
+Stack trace:
+#0 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
+#1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#2 {main}  
+[2017-08-27 22:25:53] lumen.ERROR: ErrorException: file_get_contents(https://api.themoviedb.org/3/search/movie?api_key=ca23af59f66f1506ef3c055712aa6341&amp;language=fr-FR&amp;query=Pretty woman): failed to open stream: HTTP request failed! HTTP/1.1 400 BAD_REQUEST
+ in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:156
+Stack trace:
+#0 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'file_get_conten...', 'C:\\wamp\\www\\Hap...', 156, Array)
+#1 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(156): file_get_contents('https://api.the...')
+#2 [internal function]: App\Http\Controllers\MoviesController->getMovieByTitle('pretty woman')
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#6 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovieByTitle', Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-27 22:26:52] lumen.ERROR: ErrorException: file_get_contents(https://api.themoviedb.org/3/search/movie?api_key=ca23af59f66f1506ef3c055712aa6341&amp;language=fr-FR&amp;query=Pretty woman): failed to open stream: HTTP request failed! HTTP/1.1 400 BAD_REQUEST
+ in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:156
+Stack trace:
+#0 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'file_get_conten...', 'C:\\wamp\\www\\Hap...', 156, Array)
+#1 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(156): file_get_contents('https://api.the...')
+#2 [internal function]: App\Http\Controllers\MoviesController->getMovieByTitle('pretty woman')
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#6 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovieByTitle', Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-27 22:28:23] lumen.ERROR: ErrorException: file_get_contents(https://api.themoviedb.org/3/search/movie?api_key=ca23af59f66f1506ef3c055712aa6341&amp;language=fr-FR&amp;query=Pretty woman): failed to open stream: HTTP request failed! HTTP/1.1 400 BAD_REQUEST
+ in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:156
+Stack trace:
+#0 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'file_get_conten...', 'C:\\wamp\\www\\Hap...', 156, Array)
+#1 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(156): file_get_contents('https://api.the...')
+#2 [internal function]: App\Http\Controllers\MoviesController->getMovieByTitle('pretty woman')
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#6 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovieByTitle', Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-27 22:41:43] lumen.ERROR: ErrorException: file_get_contents(https://api.themoviedb.org/3/search/movie?api_key=ca23af59f66f1506ef3c055712aa6341&amp;language=fr-FR&amp;query=Pretty woman): failed to open stream: HTTP request failed! HTTP/1.1 400 BAD_REQUEST
+ in C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php:156
+Stack trace:
+#0 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'file_get_conten...', 'C:\\wamp\\www\\Hap...', 156, Array)
+#1 C:\wamp\www\HappyDayAPI\api\app\Http\Controllers\MoviesController.php(156): file_get_contents('https://api.the...')
+#2 [internal function]: App\Http\Controllers\MoviesController->getMovieByTitle('pretty woman')
+#3 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(29): call_user_func_array(Array, Array)
+#4 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#5 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#6 C:\wamp\www\HappyDayAPI\api\vendor\illuminate\container\Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#7 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#8 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#9 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MoviesController), 'getMovieByTitle', Array)
+#10 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#11 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#12 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(528): Laravel\Lumen\Application->handleFoundRoute(Array)
+#13 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 C:\wamp\www\HappyDayAPI\api\vendor\laravel\lumen-framework\src\Concerns\RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 C:\wamp\www\HappyDayAPI\api\public\index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
