@@ -161,6 +161,12 @@ class SpeechController extends Controller{
 
                     $res = app('App\Http\Controllers\BookController')->getBookByName($name);
                 }
+            }else if(in_array("programme", $message_item)){
+                if (in_array("soir", $message_item)) {
+                    $res = app('App\Http\Controllers\TvguideController')->getTvGuideTonigtByTime();
+                }else{
+                    $res = app('App\Http\Controllers\TvguideController')->getTvGuideTonigt();
+                }
             }
         }
 
