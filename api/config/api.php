@@ -17,3 +17,8 @@ define('MOVIES_BASEURL', 'https://api.themoviedb.org/3/');
 // BOOK API
 define("BOOK_BASEURL",   "https://www.goodreads.com/");
 define("BOOK_KEY",		"KEvJO5MrHpEYao9Z0lzw");
+
+
+// RESTAURANT API
+define("RESTAURANT_BASEURL",   "https://api.yelp.com/v3/");
+define("RESTAURANT_KEY",		"Bearer NNecLyYyfE5DRyO_MOM9RDKSSEYomfDjMx3NEuSlwwhoEcl2ZrzTzgilz-mW4-JQZxkQSjWUwnXYi-4sLXSr1MfmBvP1tk4KeTvK-sza_IRAaa3JYXdVrV6p0e-jWXYx");
