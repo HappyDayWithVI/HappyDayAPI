@@ -28,7 +28,8 @@ $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
 $app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByName');
 $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
-// Films
+
+// Movies
 $app->get('movies', 'MoviesController@getMovies');
 $app->get('movies/genres', 'MoviesController@getGenres');
 // $app->get('movies/genre/{id}', 'MoviesController@getGenres');
@@ -36,6 +37,7 @@ $app->get('movies/genre/{name}', 'MoviesController@getMoviesByGenre');
 $app->get('movie/{title}', 'MoviesController@getMovieByTitle');
 $app->get('movie/cast/{title}', 'MoviesController@getActorByMovieName');
 $app->get('movie/actor/{name}', 'MoviesController@getMovieByActor');
+$app->get('movie/detail/{id}', 'MoviesController@getMovieDetail');
 
 
 // book
@@ -44,3 +46,7 @@ $app->get('book/author/{author}', 'BookController@getBookByAuthor');
 $app->get('book/category/{category}', 'BookController@getBookByCategory');
 $app->get('book/isbn/{isbn}', 'BookController@getBookByISBN');
 $app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
+$app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
+
+// user
+$app->get('user/{id}', 'UserController@show');

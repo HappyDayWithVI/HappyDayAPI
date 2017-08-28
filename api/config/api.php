@@ -8,7 +8,7 @@ define("WEATHER_BASEURL",     "http://api.openweathermap.org/data/2.5/");
 
 // TVSHOWS API
 define("TVSHOW_BASEURL",   "http://api.plannr.fr/");
-//define("TVSHOW_KEY",		"17CFE9A03C551B87");
+define("TVSHOW_KEY",		"ec1278c07aae49d6896fac8db378e634");
 
 // MOVIES API
 define('MOVIES_KEY', 'ca23af59f66f1506ef3c055712aa6341');

@@ -138,6 +138,29 @@ class SpeechController extends Controller{
 
                     $res = app('App\Http\Controllers\MoviesController')->getMovieByTitle($name);
                 }
+            }else if(in_array("livre", $message_item)){
+                if (in_array("de", $message_item)) {
+                    $author = "";
+
+                    foreach ($message_item as $word) {                       
+                        if ($word != "de" && $word != "livre" ) {
+                            $author .= $word."+";
+                        }
+                    }
+
+                    $res = app('App\Http\Controllers\BookController')->getBookByAuthor($author);
+                }else{
+                    $name = "";
+                    foreach ($message_item as $word) {
+                        if ($word != "livre" ) {
+                            $name .= $word."+";
+                        }
+                    }
+
+                    $name = rtrim($name,"+");
+
+                    $res = app('App\Http\Controllers\BookController')->getBookByName($name);
+                }
             }
         }
 
