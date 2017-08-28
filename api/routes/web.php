@@ -33,11 +33,14 @@ $app->get('movies', 'MoviesController@getMovies');
 $app->get('movies/genres', 'MoviesController@getGenres');
 // $app->get('movies/genre/{id}', 'MoviesController@getGenres');
 $app->get('movies/genre/{name}', 'MoviesController@getMoviesByGenre');
-$app->get('movie/{title}', 'MoviesController@getMovieByTitle'); // ok
-$app->get('movie/cast/{title}', 'MoviesController@getActorByMovieName'); // ok
-$app->get('movie/actor/{name}', 'MoviesController@getMovieByActor'); // ok
+$app->get('movie/{title}', 'MoviesController@getMovieByTitle');
+$app->get('movie/cast/{title}', 'MoviesController@getActorByMovieName');
+$app->get('movie/actor/{name}', 'MoviesController@getMovieByActor');
 
 
-
-// user
-$app->get('user/{id}', 'UserController@show');
+// book
+$app->get('book/title/{title}', 'BookController@getBookByName');
+$app->get('book/author/{author}', 'BookController@getBookByAuthor');
+$app->get('book/category/{category}', 'BookController@getBookByCategory');
+$app->get('book/isbn/{isbn}', 'BookController@getBookByISBN');
+$app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
