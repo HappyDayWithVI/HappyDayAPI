@@ -224,8 +224,7 @@ class MoviesController extends Controller
         $genre = substr($genre, 0, -3);
 
 
-
-        $details = ["video" => $video, "rating" => $data_movie_detail->vote_average, "year" => substr($data_movie_detail->release_date, 0, 4), "runtime" => $runtime, "genre" => $genre];
+        $details = ["name" => $data_movie_detail->title, "image" => "http://image.tmdb.org/t/p/w185".$data_movie_detail->poster_path, 'resume' => $data_movie_detail->overview, "video" => $video, "rating" => $data_movie_detail->vote_average, "year" => substr($data_movie_detail->release_date, 0, 4), "runtime" => $runtime, "genre" => $genre];
 
         return ['id' => '3-6', 'result' => $details];
     }
