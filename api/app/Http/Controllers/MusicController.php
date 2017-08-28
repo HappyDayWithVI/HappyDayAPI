@@ -35,7 +35,6 @@ class MusicController extends Controller
     curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $result = json_decode(curl_exec($curl),true);
-    //var_dump($result);
     curl_close($curl);
     $data_tracks = array();
     foreach($result as $key => $items)
@@ -60,6 +59,42 @@ class MusicController extends Controller
       }
     }
     return($data_tracks);
+  }
+
+
+  private function getArtistAlbum($id_artist)
+  {
+    $token = $this->getGeneralToken();
+    $curl = curl_init();
+    $url = MUSIC_URL_API."v1/artists/".$id_artist."/albums";
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($curl,CURLOPT_URL, $url);
+    $header = array('Accept: application/json', 'Content-Type: application/json','Authorization: Bearer '.$token);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $result = json_decode(curl_exec($curl),true);
+    curl_close($curl);
+    $data_albums = array();
+    foreach($result as $key => $items)
+    {
+      if (is_array($items))
+      {
+        foreach($items as $k2 => $element)
+        {
+            $data_albums[]=array('album_id' => $element['id'],
+                                'album_name' => $element['name'],
+                                'album_url' => $element['external_urls']['spotify'],
+                                'album_uri' => $element['uri'],
+                                'album_big_picture' => $element['images'][0]['url'],
+                                'album_picture' => $element['images'][1]['url'],
+                                'album_mini' => $element['images'][2]['url']
+                              );
+        }
+
+      }
+    }
+    return($data_albums);
   }
 
 
@@ -159,7 +194,8 @@ class MusicController extends Controller
                                 'artist_picture' => $element['images'][1]['url'],
                                 'artist_little' => $element['images'][2]['url'],
                                 'artist_mini'=> $element['images'][3]['url'],
-                                'artist_genres'=> $data_genre
+                                'artist_genres'=> $data_genre,
+                                'artist_album'=> self::getArtistAlbum($element['id'])
                               );
         }
       }
@@ -199,10 +235,26 @@ class MusicController extends Controller
     }
     else if($type == "playlist")
     {
-        $data_sought[]=$result;
+        foreach($result as $key => $playlist)
+        {
+          foreach($playlist['items'] as $k2 => $element)
+          {
+            $data_sought[]=array('playlist_id'=> $element['id'],
+                                  'playlist_name'=> $element['name'],
+                                  'playlist_url'=> $element['external_urls']['spotify'],
+                                  'playlist_uri'=> $element['uri'],
+                                  'playlist_image'=> $element['images'][0]['url'],
+                                  'playlist_owner_id'=> $element['owner']['id'],
+                                  'playlist_owner_name'=> $element['owner']['display_name'],
+                                  'playlist_owner_url'=> $element['owner']['external_urls']['spotify'],
+                                  'playlist_owner_uri'=> $element['owner']['uri']
+
+            );
+          }
+        }
     }
-    var_dump($data_sought[0]['album_tracks'][0]);
-    //return $data_sought;
+    //var_dump($data_sought);
+    return $data_sought;
   }
 
 }
