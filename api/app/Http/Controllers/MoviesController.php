@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Movies;
@@ -25,6 +24,7 @@ class MoviesController extends Controller
     }
 
     public function getMovies(){
+
         $data_movie_url = file_get_contents(MOVIES_BASEURL .'discover/movie?api_key='. MOVIES_KEY .'&sort_by=popularity.desc&include_video=true&year=2018&language='. LANG_CODE);
         $data_movie = json_decode($data_movie_url);
 
@@ -34,9 +34,11 @@ class MoviesController extends Controller
         $movies = array();
 
         foreach ($data as $key => $value) {
+            $movie_id = $value->id;
+
 
             if ($value->overview != "" && $value->adult == false) {            
-                $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
+                $movie = ["id" => $movie_id, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
 
                 if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
                     $value->release_date = 'INCONNU';
@@ -117,13 +119,12 @@ class MoviesController extends Controller
         $result = '';
         $movies = array();
 
-        $m = 1;
-
         foreach ($data as $key => $value) {
 
             if ($value->overview != "" && $value->adult == false) {            
+                $movie_id = $value->id;
 
-                $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
+                $movie = ["id" => $movie_id, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
 
                 if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
                     $value->release_date = 'INCONNU';
@@ -132,7 +133,6 @@ class MoviesController extends Controller
                 }
 
                 array_push($movies, $movie);
-                $m++;
             }
         }
 
@@ -141,16 +141,12 @@ class MoviesController extends Controller
     }
 
     public function getMoviesByGenre($genre){
-        // echo $genre;
+        $res_genre = $this->getGenres();
 
-        // echo $this->getGenres();
-
-        $data_genre_url = file_get_contents(MOVIES_BASEURL .'genre/movie/list?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
-        $data_genre = json_decode($data_genre_url);
-
-        foreach ($data_genre->genres as $possible_genre) {
-            if (strtolower($possible_genre->name) == $genre) {
-                $id = $possible_genre->id;
+        foreach ($res_genre->original as $id_genre => $nom_genre) {
+            if (strtolower($nom_genre) == strtolower($genre)) {
+                $id = $id_genre;
+                break;
             }
         }
 
@@ -162,12 +158,10 @@ class MoviesController extends Controller
         $m = 1;
 
         foreach ($data_movies->results as $key => $value) {
+            if ($value->overview != "" && $value->adult == false) {
+                $movie_id = $value->id;
 
-            // var_dump($value);
-
-            if ($value->overview != "" && $value->adult == false) {            
-
-                $movie = ["id" => $m, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
+                $movie = ["id" => $movie_id, "name" => $value->title, "image" => "http://image.tmdb.org/t/p/w185".$value->poster_path, "resume" => $value->overview];
 
                 if( empty($value->release_date) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value->release_date) ){
                     $value->release_date = 'INCONNU';
@@ -182,6 +176,58 @@ class MoviesController extends Controller
 
         return ['id' => '3-5', 'result' => $movies];
 
+    }
+
+    public function getMovieDetail($id){
+
+        $data_video_url = file_get_contents(MOVIES_BASEURL .'movie/'.$id.'/videos?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
+        $data_video = json_decode($data_video_url);
+        
+        if (count($data_video->results) == 0) {
+            // If no video has been found on the french version, search in other language
+            $data_video_url = file_get_contents(MOVIES_BASEURL .'movie/'.$id.'/videos?api_key='. MOVIES_KEY);
+            $data_video = json_decode($data_video_url);
+
+            if (count($data_video->results) == 0) {
+                $video = false;
+            }
+        }
+
+        if (!isset($video)) {
+            foreach ($data_video->results as $video) {
+                $site = $video->site;
+                if ($video->site == "YouTube" && $video->type == "Trailer") {
+                    $video = "https://www.youtube.com/embed/".$video->key;
+                    break;
+                }
+            }
+        }
+
+        $data_movie_detail_url = file_get_contents(MOVIES_BASEURL .'movie/'.$id.'?api_key='. MOVIES_KEY .'&language='. LANG_CODE);
+        $data_movie_detail = json_decode($data_movie_detail_url);
+        if ($data_movie_detail->runtime == 0) {
+            $data_movie_detail_url_en = file_get_contents(MOVIES_BASEURL .'movie/'.$id.'?api_key='. MOVIES_KEY);
+            $data_movie_detail_en = json_decode($data_movie_detail_url_en);
+        }
+
+        if (isset($data_movie_detail_en)) {
+            $runtime = str_replace(".", "h", substr(($data_movie_detail_en->runtime/60), 0, 4));
+        }else{
+            $runtime = str_replace(".", "h", substr(($data_movie_detail->runtime/60), 0, 4));
+        }
+
+        $genre = "";
+        foreach ($data_movie_detail->genres as $genre_item) {
+            $res_genre = $this->getGenres($genre_item->id);
+            $genre .= $res_genre->original["name"]." / ";
+        }
+        $genre = substr($genre, 0, -3);
+
+
+
+        $details = ["video" => $video, "rating" => $data_movie_detail->vote_average, "year" => substr($data_movie_detail->release_date, 0, 4), "runtime" => $runtime, "genre" => $genre];
+
+        return ['id' => '3-6', 'result' => $details];
     }
 
     private function getDate($date_string){
