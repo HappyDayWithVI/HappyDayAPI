@@ -30,9 +30,7 @@ class TvshowController extends Controller{
 
             for ($i=0; $i < count($data_tvshow); $i++) {
 
-                $details = ["channel" => $data_tvshow[$i]->channel, "runtime" => $data_tvshow[$i]->runtime, "season" => $data_tvshow[$i]->season, "episode" => $data_tvshow[$i]->episode, "rating" => $data_tvshow[$i]->rating, "status" => $data_tvshow[$i]->status ];
-
-                $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image, "details" => $details];
+                $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image, "channel" => $data_tvshow[$i]->channel, "runtime" => $data_tvshow[$i]->runtime, "season" => $data_tvshow[$i]->season, "episode" => $data_tvshow[$i]->episode, "rating" => $data_tvshow[$i]->rating, "status" => $data_tvshow[$i]->status];
 
                 array_push($shows_by_genre, $show);
                 $t++;
@@ -55,9 +53,7 @@ class TvshowController extends Controller{
 
         for ($i=0; $i < count($data_tvshow); $i++) {
 
-            $details = ["channel" => $data_tvshow[$i]->channel, "runtime" => $data_tvshow[$i]->runtime, "season" => $data_tvshow[$i]->season, "episode" => $data_tvshow[$i]->episode, "rating" => $data_tvshow[$i]->rating, "status" => $data_tvshow[$i]->status ];
-
-            $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image, "details" => $details];
+            $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image, "channel" => $data_tvshow[$i]->channel, "runtime" => $data_tvshow[$i]->runtime, "season" => $data_tvshow[$i]->season, "episode" => $data_tvshow[$i]->episode, "rating" => $data_tvshow[$i]->rating, "status" => $data_tvshow[$i]->status];
 
             array_push($shows_by_name, $show);
             $t++;
