@@ -15,16 +15,28 @@ class BookController extends Controller{
 
 
         foreach ($data_book->items as $book) {
-            if ($book->volumeInfo->language == "fr") {
+            if ($book->volumeInfo->language == "fr" && isset($book->volumeInfo->description)) {
 
                 $author = "";
                 foreach ($book->volumeInfo->authors as $auth) {
                     $author .= $auth." / ";
                 }
 
+                if (isset($book->volumeInfo->imageLinks)) {
+                    if (isset($book->volumeInfo->imageLinks->smallThumbnail)) {
+                        $img = $book->volumeInfo->imageLinks->smallThumbnail;
+                    }elseif (isset($book->volumeInfo->imageLinks->thumbnail)) {
+                        $img = $book->volumeInfo->imageLinks->thumbnail;
+                    }else{
+                        $img = "";
+                    }
+                }else{
+                    $img = "";
+                }
+
                 $author = substr($author, 0, -3);
 
-                $book_item = ["name" => $book->volumeInfo->title, 'author' => $author, 'image' => $book->volumeInfo->imageLinks->smallThumbnail, 'resume' => $book->volumeInfo->description, "published_year" => substr($book->volumeInfo->publishedDate, 0, 4)];
+                $book_item = ["name" => $book->volumeInfo->title, 'author' => $author, 'image' => $img, 'resume' => $book->volumeInfo->description, "published_year" => substr($book->volumeInfo->publishedDate, 0, 4)];
 
                 array_push($books, $book_item);
             }
@@ -53,7 +65,19 @@ class BookController extends Controller{
 
                 $author = substr($author, 0, -3);
 
-                $book_item = ["name" => $book->volumeInfo->title, 'author' => $author, 'image' => $book->volumeInfo->imageLinks->smallThumbnail, 'resume' => $book->volumeInfo->description, "published_year" => substr($book->volumeInfo->publishedDate, 0, 4)];
+                if (isset($book->volumeInfo->imageLinks)) {
+                    if (isset($book->volumeInfo->imageLinks->smallThumbnail)) {
+                        $img = $book->volumeInfo->imageLinks->smallThumbnail;
+                    }elseif (isset($book->volumeInfo->imageLinks->thumbnail)) {
+                        $img = $book->volumeInfo->imageLinks->thumbnail;
+                    }else{
+                        $img = "";
+                    }
+                }else{
+                    $img = "";
+                }
+
+                $book_item = ["name" => $book->volumeInfo->title, 'author' => $author, 'image' => $img, 'resume' => $book->volumeInfo->description, "published_year" => substr($book->volumeInfo->publishedDate, 0, 4)];
 
                 array_push($books, $book_item);
             }
