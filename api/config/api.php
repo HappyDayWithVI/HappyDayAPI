@@ -17,3 +17,6 @@ define('MOVIES_BASEURL', 'https://api.themoviedb.org/3/');
 // BOOK API
 define("BOOK_BASEURL",   "https://www.goodreads.com/");
 define("BOOK_KEY",		"KEvJO5MrHpEYao9Z0lzw");
+
+// TVGUIDE API
+define("TVGUIDE_BASEURL",   "https://webnext.fr/epg_cache/programme-tv-rss_");

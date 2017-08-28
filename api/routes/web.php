@@ -48,5 +48,9 @@ $app->get('book/isbn/{isbn}', 'BookController@getBookByISBN');
 $app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
 $app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
 
+// TVGUIDE
+$app->get('tvguide/now', 'TvguideController@getTvGuideTonigtByTime');
+$app->get('tvguide/night', 'TvguideController@getTvGuideTonigt');
+
 // user
 $app->get('user/{id}', 'UserController@show');
