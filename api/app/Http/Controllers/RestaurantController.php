@@ -26,17 +26,16 @@ class RestaurantController extends Controller {
 
         $restaurants = array();
 
-        $i = 1;
-
         foreach ($data_restaurant->businesses as $restaurant_item) {
-
-            if ($i == 1) {
-                var_dump($restaurant_item);
+            $address = "";
+            foreach ($restaurant_item->location->display_address as $el) {
+                $address .= $el." ";
             }
 
-            $restaurant = ['name' => $restaurant_item->name, 'image' => $restaurant_item->image_url];
+            $address = substr($address, 0, -1);
+
+            $restaurant = ['name' => $restaurant_item->name, 'is_closed' => $restaurant_item->is_closed, 'image' => $restaurant_item->image_url, 'rating' => ($restaurant_item->rating*2), 'price' => $restaurant_item->price, 'adress' => $address];
             array_push($restaurants, $restaurant);
-            $i++;
         }       
 
 
