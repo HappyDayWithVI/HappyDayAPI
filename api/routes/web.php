@@ -30,4 +30,4 @@ $app->get('user/{id}', 'UserController@show');
 
 //Music
 $app->get('music/new_releases/{country}/{limit}', 'MusicController@getNewRealease');
-$app->get('music/search/{type}/{elementsought}', 'MusicController@getSearch');
+$app->get('music/{type}/{elementsought}', 'MusicController@getSearch');
