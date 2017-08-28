@@ -22,7 +22,7 @@ class TvshowController extends Controller{
 
             $t = 1;
 
-            $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?genre='.$genres);
+            $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?key='.TVSHOW_KEY.'&genre='.$genres);
 
             $data_tvshow = json_decode($data_tvshow_url);
 
@@ -30,7 +30,9 @@ class TvshowController extends Controller{
 
             for ($i=0; $i < count($data_tvshow); $i++) {
 
-                $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image];
+                $details = ["channel" => $data_tvshow[$i]->channel, "runtime" => $data_tvshow[$i]->runtime, "season" => $data_tvshow[$i]->season, "episode" => $data_tvshow[$i]->episode, "rating" => $data_tvshow[$i]->rating, "status" => $data_tvshow[$i]->status ];
+
+                $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image, "details" => $details];
 
                 array_push($shows_by_genre, $show);
                 $t++;
@@ -43,7 +45,7 @@ class TvshowController extends Controller{
     public function getTvshowByName($nameSearch){
         $nameSearch = str_replace("+", "%20", $nameSearch);
 
-        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?serie='.$nameSearch);
+        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?key='.TVSHOW_KEY.'&serie='.$nameSearch);
 
         $t = 1;
 
@@ -53,7 +55,9 @@ class TvshowController extends Controller{
 
         for ($i=0; $i < count($data_tvshow); $i++) {
 
-            $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image];
+            $details = ["channel" => $data_tvshow[$i]->channel, "runtime" => $data_tvshow[$i]->runtime, "season" => $data_tvshow[$i]->season, "episode" => $data_tvshow[$i]->episode, "rating" => $data_tvshow[$i]->rating, "status" => $data_tvshow[$i]->status ];
+
+            $show = ["id" => $t, "name" => $data_tvshow[$i]->name, "resume" => $data_tvshow[$i]->resume, "image" => $data_tvshow[$i]->image, "details" => $details];
 
             array_push($shows_by_name, $show);
             $t++;
@@ -67,7 +71,7 @@ class TvshowController extends Controller{
 
         $c = 1;
 
-        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?personnage='.$name);
+        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?key='.TVSHOW_KEY.'&?personnage='.$name);
 
         $data_tvshow = json_decode($data_tvshow_url);
 
@@ -93,7 +97,7 @@ class TvshowController extends Controller{
 
         $a = 1;
 
-        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?acteur='.$name);
+        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?key='.TVSHOW_KEY.'&acteur='.$name);
 
         $data_tvshow = json_decode($data_tvshow_url);
 
