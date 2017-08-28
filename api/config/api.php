@@ -9,7 +9,7 @@ define("TVSHOW_BASEURL",   "http://api.plannr.fr/");
 //define("TVSHOW_KEY",		"17CFE9A03C551B87");
 
 //Music API (Spotify)
-define("MUSIC_CLIENT_ID", 'b31ce69c7dea4451a591ceafbcc72d19');
-define("MUSIC_CLIENT_SECRET", '6a2c48a4f79446f68aecde6b5f006f4a');
+define("MUSIC_CLIENT_ID", '2893722177714a769b7e45e70f9d834b');
+define("MUSIC_CLIENT_SECRET", 'e974d6b2d8814b12addd128f65ce61c1');
 define("MUSIC_URL_API", 'https://api.spotify.com/');
 define("MUSIC_URI_TUTO_WEB", 'http://api.tutosweb.fr/music-getCode/');
