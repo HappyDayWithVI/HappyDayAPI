@@ -51,6 +51,7 @@ $app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
 
 // RESTAURANT
 $app->get('restaurant/name/{name}/city/{city}', 'RestaurantController@getRestaurantByName');
+$app->get('restaurant/best/{city}', 'RestaurantController@getBestRestaurantByCity');
 
 // user
 $app->get('user/{id}', 'UserController@show');
