@@ -56,5 +56,9 @@ $app->get('tvguide/night', 'TvguideController@getTvGuideTonigt');
 $app->get('restaurant/name/{name}/city/{city}', 'RestaurantController@getRestaurantByName');
 $app->get('restaurant/best/{city}', 'RestaurantController@getBestRestaurantByCity');
 
+// MUSEUM
+$app->get('/indoor/museum/{city}', 'MuseumController@getMuseumByCity');
+
+
 // user
 $app->get('user/{id}', 'UserController@show');
