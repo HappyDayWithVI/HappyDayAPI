@@ -196,18 +196,57 @@ class SpeechController extends Controller{
 
                     $res = app('App\Http\Controllers\RestaurantController')->getRestaurantByName($type, $assumed_city);
                 }
-            }else if(in_array("musique", $message_item)){
+            }
+            else if(in_array("musique", $message_item)){
               if (in_array("nouveauté",$message_item)){
                 $country = "FR";
                 $res = app('App\Http\Controllers\MusicController')->getNewRealease($country);
               }
+
+              else if (in_array("album",$message_item)){
+                $elementsought = "";
+                foreach ($message_item as $word){
+                  if ($word != 'musique' && $word != 'album'){
+                    $elementsought .= $word ."+";
+                  }
+                }
+                $res = app('App\Http\Controllers\MusicController')->getSearchAlbum(trim($elementsought,"+"));
+              }
+
+              else if (in_array("artiste",$message_item)){
+                $elementsought = "";
+                foreach ($message_item as $word){
+                  if ($word != 'musique' && $word != 'artiste'){
+                    $elementsought .= $word ."+";
+                  }
+                }
+                $res = app('App\Http\Controllers\MusicController')->getSearchArtist(trim($elementsought,"+"));
+              }
+
+              else if (in_array("chanson",$message_item)){
+                $elementsought = "";
+                foreach ($message_item as $word){
+                  if ($word != 'musique' && $word != 'chanson'){
+                    $elementsought .= $word ."+";
+                  }
+                }
+                $res = app('App\Http\Controllers\MusicController')->getSearchTrack(trim($elementsought,"+"));
+              }
+
+              else if (in_array("playlist",$message_item)){
+                $elementsought = "";
+                foreach ($message_item as $word){
+                  if ($word != 'musique' && $word != 'playlist'){
+                    $elementsought .= $word ."+";
+                  }
+                }
+                $res = app('App\Http\Controllers\MusicController')->getSearchPlaylist(trim($elementsought,"+"));
+              }
+
+
             }
         }
-
         return response()->json($res);
-
-        // if general get weather
     }
 
-    //
 }
