@@ -22,7 +22,7 @@ class SpeechController extends Controller{
                     }else{
                         $pos_city = array_search("à", $message_item)+1;
                     }
-                    
+
                     $city = $message_item[$pos_city];
                 }else{
                     if ((count($message_item) > 1 && !in_array("semaine", $message_item) || count($message_item) > 2 && in_array("semaine", $message_item))) {
@@ -33,7 +33,7 @@ class SpeechController extends Controller{
                             if ($el != "semaine" && $el != "meteo" ) {
                                 $city .= $el." ";
                             }
-                        }                      
+                        }
                     }else{
                         // get default user city
                         $city = "Lyon";
@@ -71,7 +71,7 @@ class SpeechController extends Controller{
 
                     $acteur = "";
 
-                    foreach ($message_item as $word) {                        
+                    foreach ($message_item as $word) {
                         if ($word != "avec" && $word != "serie" ) {
                             $acteur .= $word."+";
                         }
@@ -119,7 +119,7 @@ class SpeechController extends Controller{
 
                     $acteur = "";
 
-                    foreach ($message_item as $word) {                        
+                    foreach ($message_item as $word) {
                         if ($word != "avec" && $word != "film" ) {
                             $acteur .= $word."+";
                         }
@@ -142,7 +142,7 @@ class SpeechController extends Controller{
                 if (in_array("de", $message_item)) {
                     $author = "";
 
-                    foreach ($message_item as $word) {                       
+                    foreach ($message_item as $word) {
                         if ($word != "de" && $word != "livre" ) {
                             $author .= $word."+";
                         }
@@ -193,9 +193,14 @@ class SpeechController extends Controller{
                             $type .= $word."+";
                         }
                     }
-                    
+
                     $res = app('App\Http\Controllers\RestaurantController')->getRestaurantByName($type, $assumed_city);
                 }
+            }else if(in_array("musique", $message_item)){
+              if (in_array("nouveauté",$message_item)){
+                $country = "FR";
+                $res = app('App\Http\Controllers\MusicController')->getNewRealease($country);
+              }
             }
         }
 
