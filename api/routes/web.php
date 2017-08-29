@@ -50,3 +50,8 @@ $app->get('book/editor/{editor}', 'BookController@getBookByPublisher');
 
 // user
 $app->get('user/{id}', 'UserController@show');
+
+// Cine
+$app->get('cine/search/{keyword}', 'CineController@getCineByKeywords');
+$app->get('cine/city/{city}', 'CineController@getCineByCity');
+
