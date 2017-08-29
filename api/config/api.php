@@ -10,6 +10,13 @@ define("WEATHER_BASEURL",     "http://api.openweathermap.org/data/2.5/");
 define("TVSHOW_BASEURL",   "http://api.plannr.fr/");
 define("TVSHOW_KEY",		"ec1278c07aae49d6896fac8db378e634");
 
+//Music API (Spotify)
+define("MUSIC_CLIENT_ID", '2893722177714a769b7e45e70f9d834b');
+define("MUSIC_CLIENT_SECRET", 'e974d6b2d8814b12addd128f65ce61c1');
+define("MUSIC_URL_API", 'https://api.spotify.com/');
+define("MUSIC_URI_TUTO_WEB", 'http://api.tutosweb.fr/music-getCode/');
+
+
 // MOVIES API
 define('MOVIES_KEY', 'ca23af59f66f1506ef3c055712aa6341');
 define('MOVIES_BASEURL', 'https://api.themoviedb.org/3/');

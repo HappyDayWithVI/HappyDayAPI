@@ -29,6 +29,14 @@ $app->get('tvshow/character/{name}', 'TvshowController@getCharacterOfTvshowByNam
 $app->get('tvshow/actor/{name}', 'TvshowController@getTvshowByActor');
 
 
+//Music
+$app->get('music/new_releases/{country}', 'MusicController@getNewRealease');
+$app->get('music/album/{elementsough}', 'MusicController@getSearchAlbum');
+$app->get('music/artist/{elementsought}', 'MusicController@getSearchArtist');
+$app->get('music/track/{elementsought}', 'MusicController@getSearchTrack');
+$app->get('music/playlist/{elementsought}', 'MusicController@getSearchPlaylist');
+
+
 // Movies
 $app->get('movies', 'MoviesController@getMovies');
 $app->get('movies/genres', 'MoviesController@getGenres');

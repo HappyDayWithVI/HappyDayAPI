@@ -4785,6 +4785,7 @@ Stack trace:
 #0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RegistersExceptionHandlers.php(54): Laravel\Lumen\Application->handleShutdown()
 #1 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
 #2 {main}  
+<<<<<<< HEAD
 [2017-08-29 09:44:14] lumen.ERROR: ErrorException: Use of undefined constant MUSIC_CLIENT_ID - assumed 'MUSIC_CLIENT_ID' in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MusicController.php:15
 Stack trace:
 #0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MusicController.php(15): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Use of undefine...', '/home/apprenant...', 15, Array)
@@ -4807,3 +4808,65 @@ Stack trace:
 #17 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #18 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #19 {main}  
+=======
+[2017-08-29 08:53:40] lumen.ERROR: ErrorException: Undefined variable: assumed_city in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:197
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/SpeechController.php(197): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', '/home/apprenant...', 197, Array)
+#1 [internal function]: App\Http\Controllers\SpeechController->interpretSpeech('mcdonald restau...')
+#2 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\SpeechController), 'interpretSpeech', Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-29 09:04:12] lumen.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Class 'SpotifyWebAPI\Session' not found in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MusicController.php:14
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MusicController.php(125): App\Http\Controllers\MusicController->getGeneralToken()
+#1 [internal function]: App\Http\Controllers\MusicController->getNewRealease('france')
+#2 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MusicController), 'getNewRealease', Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-29 09:04:49] lumen.ERROR: ErrorException: Undefined index: items in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MusicController.php:139
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/MusicController.php(139): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined index...', '/home/apprenant...', 139, Array)
+#1 [internal function]: App\Http\Controllers\MusicController->getNewRealease('france')
+#2 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MusicController), 'getNewRealease', Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+>>>>>>> e24999871cc52980fe329d6fdd6fc20a28011238

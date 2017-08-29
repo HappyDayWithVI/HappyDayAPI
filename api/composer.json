@@ -7,7 +7,9 @@
     "require": {
         "php": ">=7.0",
         "laravel/lumen-framework": "5.4.*",
-        "vlucas/phpdotenv": "~2.2"
+        "vlucas/phpdotenv": "~2.2",
+        "guzzlehttp/guzzle": "^6.3",
+        "jwilsson/spotify-web-api-php": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
