@@ -29,5 +29,8 @@ $app->get('tvshow/name/{nameSearch}', 'TvshowController@getTvshowByName');
 $app->get('user/{id}', 'UserController@show');
 
 //Music
-$app->get('music/new_releases/{country}/{limit}', 'MusicController@getNewRealease');
-$app->get('music/{type}/{elementsought}', 'MusicController@getSearch');
+$app->get('music/new_releases/{country}', 'MusicController@getNewRealease');
+$app->get('music/album/{elementsough}', 'MusicController@getSearchAlbum');
+$app->get('music/artist/{elementsought}', 'MusicController@getSearchArtist');
+$app->get('music/track/{elementsought}', 'MusicController@getSearchTrack');
+$app->get('music/playlist/{elementsought}', 'MusicController@getSearchPlaylist');
