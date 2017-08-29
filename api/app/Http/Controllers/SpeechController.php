@@ -167,6 +167,35 @@ class SpeechController extends Controller{
                 }else{
                     $res = app('App\Http\Controllers\TvguideController')->getTvGuideTonigt();
                 }
+            }else if(in_array("restaurant", $message_item)){
+                if (in_array("meilleur", $message_item)) {
+                    $city = "";
+                    foreach ($message_item as $word) {
+                        if ($word != "meilleur" || $word != "restaurant" || $word != "a" || $word != "à" ) {
+                            $city .= $word."+";
+                        }
+                    }
+
+                    $res = app('App\Http\Controllers\RestaurantController')->getBestRestaurantByCity($city);
+                }else{
+
+                    if ($key = array_search('à', $message_item)) {
+                        $assumed_city = $message_item[$key+1];
+                    }else if($key = array_search('a', $message_item)){
+                        $assumed_city = $message_item[$key+1];
+                    }
+                    unset($message_item[$key+1]);
+
+                    $type= "";
+
+                    foreach ($message_item as $word) {
+                        if ($word != "restaurant" || $word != "a" || $word != "à" ) {
+                            $type .= $word."+";
+                        }
+                    }
+                    
+                    $res = app('App\Http\Controllers\RestaurantController')->getRestaurantByName($type, $assumed_city);
+                }
             }
         }
 

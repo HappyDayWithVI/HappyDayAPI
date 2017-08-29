@@ -20,3 +20,7 @@ define("BOOK_KEY",		"KEvJO5MrHpEYao9Z0lzw");
 
 // TVGUIDE API
 define("TVGUIDE_BASEURL",   "https://webnext.fr/epg_cache/programme-tv-rss_");
+
+// RESTAURANT API
+define("RESTAURANT_BASEURL",   "https://api.yelp.com/v3/");
+define("RESTAURANT_KEY",		"Bearer NNecLyYyfE5DRyO_MOM9RDKSSEYomfDjMx3NEuSlwwhoEcl2ZrzTzgilz-mW4-JQZxkQSjWUwnXYi-4sLXSr1MfmBvP1tk4KeTvK-sza_IRAaa3JYXdVrV6p0e-jWXYx");
