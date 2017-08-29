@@ -55,5 +55,6 @@ $app->get('user/{id}', 'UserController@show');
 $app->get('cine/search/{keyword}', 'CineController@getCineByKeywords');
 $app->get('cine/city/{city}', 'CineController@getCineByCity');
 $app->get('cine/name/{name}', 'CineController@getCineByName');
-$app->get('cine/showtimes/{name}/{city}/{movie}', 'CineController@getCineByName');
+$app->get('cine/movie/{keyword}', 'CineController@getMovieByKeywords');
+$app->get('cine/showtimes/{movie}/{near}', 'CineController@getShowtimesByIDMovieAndIDNear');
 
