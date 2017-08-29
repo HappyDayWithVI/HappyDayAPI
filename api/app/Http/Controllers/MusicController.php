@@ -145,7 +145,7 @@ class MusicController extends Controller
                             'artist_uri' => $element['artists'][0]['uri']);
         }
       }
-      return ['id' => '6-0', 'result' => ['country' => $country, 'new_releases' => $result]];
+      return ['id' => '7-1', 'result' => ['country' => $country, 'new_releases' => $result]];
   }
 
   public function getSearchAlbum($elementsought)
@@ -174,7 +174,7 @@ class MusicController extends Controller
                             'album_tracks'=> self::getAlbumTracks($element['id']));
         }
       }
-    return ['id' => '6-1', 'result' => ['album_sought' => $elementsought, 'albums' => $result]];
+    return ['id' => '7-2', 'result' => ['album_sought' => $elementsought, 'albums' => $result]];
   }
 
   public function getSearchArtist($elementsought)
@@ -203,7 +203,7 @@ class MusicController extends Controller
                             'albums'=> self::getArtistAlbum($element['id']));
       }
     }
-    return ['id' => '6-2', 'result' => ['artist_sought' => $elementsought, 'artist' => $result]];
+    return ['id' => '7-3', 'result' => ['artist_sought' => $elementsought, 'artist' => $result]];
   }
 
   public function getSearchTrack($elementsought)
@@ -230,15 +230,11 @@ class MusicController extends Controller
                             'uri'=> $element['uri'],
                             'duration'=>$element['duration_ms'],
                             'album_name'=> $element['album']['name'],
-                            'album_uri'=> $element['album']['uri'],
                             'album_picture' => $element['album']['images'][0]['url'],
-                            'album_artist'=> $element['album']['artists'][0]['name'],
-                            'album_artist_uri' => $element['album']['artists'][0]['uri'],
-                            'track_artist_name'=> $element['artists'][0]['name'],
-                            'track_artist_uri' => $element['artists'][0]['uri']);
+                            'track_artist_name'=> $element['artists'][0]['name']);
         }
       }
-  return ['id' => '6-3', 'result' => ['track_sought' => $elementsought, 'tracks' => $result]];
+  return ['id' => '7-4', 'result' => ['track_sought' => $elementsought, 'tracks' => $result]];
   }
 
   public function getSearchPlaylist($elementsought)
@@ -265,13 +261,11 @@ class MusicController extends Controller
                         'uri'=> $element['uri'],
                         'picture'=> $element['images'][0]['url'],
                         'owner_name'=> $element['owner']['display_name'],
-                        'owner_url'=> $element['owner']['external_urls']['spotify'],
-                        'owner_uri'=> $element['owner']['uri'],
                         'tracks'=> self::getPLaylistTrack($owner_id, $id_playlist)
                       );
       }
     }
-    return['id' => '6-4', 'result' => ['playlists_sought' => $elementsought, 'playlists' => $result]];;
+    return['id' => '7-5', 'result' => ['playlists_sought' => $elementsought, 'playlists' => $result]];
   }
 
 }
