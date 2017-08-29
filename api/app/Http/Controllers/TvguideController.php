@@ -13,7 +13,7 @@ class TvguideController extends Controller
         date_default_timezone_set('Europe/Paris');
     }
 
-    public function getTvGuideTonigtByTime(){
+    public function getTvGuideByTime(){
     	$data_guide_url = TVGUIDE_BASEURL.''.date("d-m-Y").'.xml';
 	    $data_guide = (array) simplexml_load_file($data_guide_url, null, LIBXML_NOCDATA);
     	
