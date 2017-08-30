@@ -11,18 +11,18 @@ class SpeechController extends Controller{
         $message = urldecode($message);
 
         if ($message == "que puis-je faire") {
-            echo "Liste d'activité";
+            $res['message'] = 'Va dormir, sérieux tu dois être tellement fatigué !';
         }else{
             $message_item = explode(" ", $message);
 
-            if (in_array("meteo", $message_item)) {
+            if (in_array("meteo", $message_item) || in_array("météo", $message_item) ) {
                 if (in_array("a", $message_item) || in_array("à", $message_item)) {
                     if (in_array("a", $message_item)) {
                         $pos_city = array_search("a", $message_item)+1;
                     }else{
                         $pos_city = array_search("à", $message_item)+1;
                     }
-
+                    
                     $city = $message_item[$pos_city];
                 }else{
                     if ((count($message_item) > 1 && !in_array("semaine", $message_item) || count($message_item) > 2 && in_array("semaine", $message_item))) {
@@ -33,7 +33,7 @@ class SpeechController extends Controller{
                             if ($el != "semaine" && $el != "meteo" ) {
                                 $city .= $el." ";
                             }
-                        }
+                        }                      
                     }else{
                         // get default user city
                         $city = "Lyon";
@@ -42,9 +42,22 @@ class SpeechController extends Controller{
 
                 if (in_array("semaine", $message_item)) {
                     $res = app('App\Http\Controllers\WeatherController')->getWeeklyWeather($city);
+                    $res['message'] = "Aujourd'hui à ". $res['result']['city'] .". " . $res['result']['week'][0]['day']. ". il fait ". $res['result']['week'][0]['temp'] ." degré. et ". $res['result']['week'][0]['desc'];
+
+                    $alt = $res;
+                    unset( $alt['result']['week'][0] );
+                    $message = '';
+                    foreach ($alt['result']['week'] as $key => $value) {
+                        $message .= '. '. $value['day'] .'. il fera '. $value['temp'] .' degré. avec '. $value['desc'];
+                    }
+
+                    $res['message'] .= $message;
                 }else{
                     $res = app('App\Http\Controllers\WeatherController')->getWeather($city);
+                    
+                    $res['message'] = "Aujourd'hui à ". $res['result']['city'] .". " . $res['result']['day']. ". il fait ". $res['result']['temp'] ." degré. et ". $res['result']['desc']; 
                 }
+
 
             }else if(in_array("serie", $message_item)){
                 if (in_array("genre", $message_item)) {
@@ -71,7 +84,7 @@ class SpeechController extends Controller{
 
                     $acteur = "";
 
-                    foreach ($message_item as $word) {
+                    foreach ($message_item as $word) {                        
                         if ($word != "avec" && $word != "serie" ) {
                             $acteur .= $word."+";
                         }
@@ -119,7 +132,7 @@ class SpeechController extends Controller{
 
                     $acteur = "";
 
-                    foreach ($message_item as $word) {
+                    foreach ($message_item as $word) {                        
                         if ($word != "avec" && $word != "film" ) {
                             $acteur .= $word."+";
                         }
@@ -142,7 +155,7 @@ class SpeechController extends Controller{
                 if (in_array("de", $message_item)) {
                     $author = "";
 
-                    foreach ($message_item as $word) {
+                    foreach ($message_item as $word) {                       
                         if ($word != "de" && $word != "livre" ) {
                             $author .= $word."+";
                         }
@@ -161,92 +174,15 @@ class SpeechController extends Controller{
 
                     $res = app('App\Http\Controllers\BookController')->getBookByName($name);
                 }
-            }else if(in_array("programme", $message_item)){
-                if (in_array("soir", $message_item)) {
-                    $res = app('App\Http\Controllers\TvguideController')->getTvGuideTonigt();
-                }else{
-                    $res = app('App\Http\Controllers\TvguideController')->getTvGuideByTime();
-                }
-            }else if(in_array("restaurant", $message_item)){
-                if (in_array("meilleur", $message_item)) {
-                    $city = "";
-                    foreach ($message_item as $word) {
-                        if ($word != "meilleur" || $word != "restaurant" || $word != "a" || $word != "à" ) {
-                            $city .= $word."+";
-                        }
-                    }
-
-                    $res = app('App\Http\Controllers\RestaurantController')->getBestRestaurantByCity($city);
-                }else{
-
-                    if ($key = array_search('à', $message_item)) {
-                        $assumed_city = $message_item[$key+1];
-                    }else if($key = array_search('a', $message_item)){
-                        $assumed_city = $message_item[$key+1];
-                    }
-                    unset($message_item[$key+1]);
-
-                    $type= "";
-
-                    foreach ($message_item as $word) {
-                        if ($word != "restaurant" || $word != "a" || $word != "à" ) {
-                            $type .= $word."+";
-                        }
-                    }
-
-                    $res = app('App\Http\Controllers\RestaurantController')->getRestaurantByName($type, $assumed_city);
-                }
-            }
-            else if(in_array("musique", $message_item)){
-              if (in_array("nouveauté",$message_item)){
-                $country = "FR";
-                $res = app('App\Http\Controllers\MusicController')->getNewRealease($country);
-              }
-
-              else if (in_array("album",$message_item)){
-                $elementsought = "";
-                foreach ($message_item as $word){
-                  if ($word != 'musique' && $word != 'album'){
-                    $elementsought .= $word ."+";
-                  }
-                }
-                $res = app('App\Http\Controllers\MusicController')->getSearchAlbum(trim($elementsought,"+"));
-              }
-
-              else if (in_array("artiste",$message_item)){
-                $elementsought = "";
-                foreach ($message_item as $word){
-                  if ($word != 'musique' && $word != 'artiste'){
-                    $elementsought .= $word ."+";
-                  }
-                }
-                $res = app('App\Http\Controllers\MusicController')->getSearchArtist(trim($elementsought,"+"));
-              }
-
-              else if (in_array("chanson",$message_item)){
-                $elementsought = "";
-                foreach ($message_item as $word){
-                  if ($word != 'musique' && $word != 'chanson'){
-                    $elementsought .= $word ."+";
-                  }
-                }
-                $res = app('App\Http\Controllers\MusicController')->getSearchTrack(trim($elementsought,"+"));
-              }
-
-              else if (in_array("playlist",$message_item)){
-                $elementsought = "";
-                foreach ($message_item as $word){
-                  if ($word != 'musique' && $word != 'playlist'){
-                    $elementsought .= $word ."+";
-                  }
-                }
-                $res = app('App\Http\Controllers\MusicController')->getSearchPlaylist(trim($elementsought,"+"));
-              }
-
-
+            }else{
+                $res['message'] = "Je n'ai pas compris ce que tu me demande";
             }
         }
+
         return response()->json($res);
+
+        // if general get weather
     }
 
+    //
 }
