@@ -83,10 +83,12 @@ class CineController extends Controller{
         $movie_detail = $result->movies->$movie;
         $result_final['movie'] = [
             'id' => $movie_detail->id,
-            'type' => $movie_detail->title,
+            'title' => $movie_detail->title,
+            'image' => 'http://fr.web.img6.acsta.net/r_400_200'. $movie_detail->poster->file_name,
             'note' => round(($movie_detail->social->press_review_rating + $movie_detail->social->user_review_rating)/2, 2), // Moyenne de note Presse + Utilisateur
             'distributor' => $movie_detail->distributor->name,
             'genre' => $movie_detail->genre,
+            'year' => date( 'Y', strtotime($movie_detail->releaseDate->date)),
             'date' => date( 'D j M Y', strtotime($movie_detail->releaseDate->date))
         ];
 

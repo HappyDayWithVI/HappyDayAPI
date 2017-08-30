@@ -11,11 +11,11 @@ class SpeechController extends Controller{
         $message = urldecode($message);
 
         if ($message == "que puis-je faire") {
-            echo "Liste d'activité";
+            $res['message'] = 'Va dormir, sérieux tu dois être tellement fatigué !';
         }else{
             $message_item = explode(" ", $message);
 
-            if (in_array("meteo", $message_item)) {
+            if (in_array("meteo", $message_item) || in_array("météo", $message_item) ) {
                 if (in_array("a", $message_item) || in_array("à", $message_item)) {
                     if (in_array("a", $message_item)) {
                         $pos_city = array_search("a", $message_item)+1;
@@ -42,9 +42,22 @@ class SpeechController extends Controller{
 
                 if (in_array("semaine", $message_item)) {
                     $res = app('App\Http\Controllers\WeatherController')->getWeeklyWeather($city);
+                    $res['message'] = "Aujourd'hui à ". $res['result']['city'] .". " . $res['result']['week'][0]['day']. ". il fait ". $res['result']['week'][0]['temp'] ." degré. et ". $res['result']['week'][0]['desc'];
+
+                    $alt = $res;
+                    unset( $alt['result']['week'][0] );
+                    $message = '';
+                    foreach ($alt['result']['week'] as $key => $value) {
+                        $message .= '. '. $value['day'] .'. il fera '. $value['temp'] .' degré. avec '. $value['desc'];
+                    }
+
+                    $res['message'] .= $message;
                 }else{
                     $res = app('App\Http\Controllers\WeatherController')->getWeather($city);
+                    
+                    $res['message'] = "Aujourd'hui à ". $res['result']['city'] .". " . $res['result']['day']. ". il fait ". $res['result']['temp'] ." degré. et ". $res['result']['desc']; 
                 }
+
 
             }else if(in_array("serie", $message_item)){
                 if (in_array("genre", $message_item)) {
@@ -161,6 +174,8 @@ class SpeechController extends Controller{
 
                     $res = app('App\Http\Controllers\BookController')->getBookByName($name);
                 }
+            }else{
+                $res['message'] = "Je n'ai pas compris ce que tu me demande";
             }
         }
 
