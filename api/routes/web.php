@@ -66,3 +66,4 @@ $app->get('restaurant/best/{city}', 'RestaurantController@getBestRestaurantByCit
 
 // user
 $app->get('user/{id}', 'UserController@show');
+$app->post('users', 'UserController@store');
