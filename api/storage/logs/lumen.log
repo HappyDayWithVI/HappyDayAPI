@@ -4845,3 +4845,43 @@ Stack trace:
 #15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #17 {main}  
+[2017-08-30 09:51:43] lumen.ERROR: ErrorException: Undefined variable: res in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:202
+Stack trace:
+#0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php(202): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', '/home/apprenant...', 202, Array)
+#1 [internal function]: App\Http\Controllers\SpeechController->interpretSpeech('musique nouveau...')
+#2 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\SpeechController), 'interpretSpeech', Array)
+#9 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  
+[2017-08-30 10:12:54] lumen.ERROR: ErrorException: Invalid argument supplied for foreach() in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MusicController.php:224
+Stack trace:
+#0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MusicController.php(224): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'Invalid argumen...', '/home/apprenant...', 224, Array)
+#1 [internal function]: App\Http\Controllers\MusicController->getSearchTrack('back+in+black')
+#2 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#3 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#4 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#5 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#6 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
+#7 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+#8 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MusicController), 'getSearchTrack', Array)
+#9 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#10 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#11 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#12 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#13 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#14 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#15 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#16 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#17 {main}  

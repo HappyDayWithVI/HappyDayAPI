@@ -43,12 +43,13 @@ class MusicController extends Controller
       {
         foreach($items as $k2 => $element)
         {
+          $duration_min = round($element['duration_ms']/60000, 2);
           $result[]=array('name'=> $element['name'],
                           'track'=> $element['preview_url'],
-                          'uri'=> $element['uri'],
-                          'duration'=>$element['duration_ms'],
+                          'uri'=> "https://open.spotify.com/embed?uri=".$element['uri'],
+                          'duration'=> $duration_min,
                           'artist_name'=> $element['artists'][0]['name'],
-                          'artist_uri' => $element['artists'][0]['uri']);
+                          'artist_uri' => "https://open.spotify.com/embed?uri=".$element['artists'][0]['uri']);
         }
       }
     }
@@ -77,7 +78,7 @@ class MusicController extends Controller
         foreach($items as $k2 => $element)
         {
             $result[]=array('name' => $element['name'],
-                          'uri' => $element['uri'],
+                          'uri' => "https://open.spotify.com/embed?uri=".$element['uri'],
                           'picture' => $element['images'][0]['url']);
         }
 
@@ -107,12 +108,12 @@ class MusicController extends Controller
         {
           $result[]=array('name'=> $items[$i]['track']['name'],
                           'track'=> $items[$i]['track']['preview_url'],
-                          'uri'=> $items[$i]['track']['uri'],
+                          'uri'=> "https://open.spotify.com/embed?uri=".$items[$i]['track']['uri'],
                           'album_name'=> $items[$i]['track']['album']['name'],
-                          'album_uri'=> $items[$i]['track']['album']['uri'],
+                          'album_uri'=> "https://open.spotify.com/embed?uri=".$items[$i]['track']['album']['uri'],
                           'album_image'=> $items[$i]['track']['album']['images'][0]['url'],
                           'artist_name'=> $items[$i]['track']['artists'][0]['name'],
-                          'artist_uri' => $items[$i]['track']['artists'][0]['uri']);
+                          'artist_uri' => "https://open.spotify.com/embed?uri=".$items[$i]['track']['artists'][0]['uri']);
         }
       }
     }
@@ -139,10 +140,10 @@ class MusicController extends Controller
         foreach($albums['items'] as $k2 => $element)
         {
           $result[] = array('name' => $element['name'],
-                            'uri' => $element['uri'],
+                            'uri' => "https://open.spotify.com/embed?uri=".$element['uri'],
                             'picture' => $element['images'][0]['url'],
                             'artist_name'=> $element['artists'][0]['name'],
-                            'artist_uri' => $element['artists'][0]['uri']);
+                            'artist_uri' => "https://open.spotify.com/embed?uri=".$element['artists'][0]['uri']);
         }
       }
       return ['id' => '6-0', 'result' => ['country' => $country, 'new_releases' => $result]];
@@ -167,10 +168,10 @@ class MusicController extends Controller
         foreach($albums['items'] as $k2 => $element)
         {
           $result[] = array('name' => $element['name'],
-                            'uri' => $element['uri'],
+                            'uri' => "https://open.spotify.com/embed?uri=".$element['uri'],
                             'picture' => $element['images'][0]['url'],
                             'artist_name'=> $element['artists'][0]['name'],
-                            'artist_uri' => $element['artists'][0]['uri'],
+                            'artist_uri' => "https://open.spotify.com/embed?uri=".$element['artists'][0]['uri'],
                             'album_tracks'=> self::getAlbumTracks($element['id']));
         }
       }
@@ -197,7 +198,7 @@ class MusicController extends Controller
       {
         $result[]=array('name' => $element['name'],
                             'url' => $element['external_urls']['spotify'],
-                            'uri' => $element['uri'],
+                            'uri' => "https://open.spotify.com/embed?uri=".$element['uri'],
                             'big_picture' => $element['images'][0]['url'],
                             'genres'=> $element['genres'],
                             'albums'=> self::getArtistAlbum($element['id']));
@@ -224,18 +225,19 @@ class MusicController extends Controller
     {
           foreach($tracks['items'] as $k2 => $element)
           {
+            $duration_min = round($element['duration_ms']/60000, 2);
             $result[]=array('name'=> $element['name'],
                             'url'=> $element['external_urls']['spotify'],
                             'track'=> $element['preview_url'],
-                            'uri'=> $element['uri'],
-                            'duration'=>$element['duration_ms'],
+                            'uri'=> "https://open.spotify.com/embed?uri=".$element['uri'],
+                            'duration'=> $duration_min,
                             'album_name'=> $element['album']['name'],
-                            'album_uri'=> $element['album']['uri'],
+                            'album_uri'=> "https://open.spotify.com/embed?uri=".$element['album']['uri'],
                             'album_picture' => $element['album']['images'][0]['url'],
                             'album_artist'=> $element['album']['artists'][0]['name'],
-                            'album_artist_uri' => $element['album']['artists'][0]['uri'],
+                            'album_artist_uri' => "https://open.spotify.com/embed?uri=".$element['album']['artists'][0]['uri'],
                             'track_artist_name'=> $element['artists'][0]['name'],
-                            'track_artist_uri' => $element['artists'][0]['uri']);
+                            'track_artist_uri' => "https://open.spotify.com/embed?uri=".$element['artists'][0]['uri']);
         }
       }
   return ['id' => '6-3', 'result' => ['track_sought' => $elementsought, 'tracks' => $result]];
@@ -262,7 +264,7 @@ class MusicController extends Controller
         $owner_id = substr($element['owner']['uri'], 13);
         $id_playlist = $element['id'];
         $result[]=array('name'=> $element['name'],
-                        'uri'=> $element['uri'],
+                        'uri'=> "https://open.spotify.com/embed?uri=".$element['uri'],
                         'picture'=> $element['images'][0]['url'],
                         'owner_name'=> $element['owner']['display_name'],
                         'owner_url'=> $element['owner']['external_urls']['spotify'],
