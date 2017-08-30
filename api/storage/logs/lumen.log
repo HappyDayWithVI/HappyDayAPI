@@ -4869,6 +4869,7 @@ Stack trace:
 #15 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #16 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #17 {main}  
+<<<<<<< HEAD
 >>>>>>> e24999871cc52980fe329d6fdd6fc20a28011238
 [2017-08-29 10:28:25] lumen.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:243
 Stack trace:
@@ -8094,6 +8095,12 @@ Stack trace:
 Stack trace:
 #0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php(249): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', '/home/apprenant...', 249, Array)
 #1 [internal function]: App\Http\Controllers\SpeechController->interpretSpeech('musique nouveut...')
+=======
+[2017-08-30 09:51:43] lumen.ERROR: ErrorException: Undefined variable: res in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:202
+Stack trace:
+#0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php(202): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', '/home/apprenant...', 202, Array)
+#1 [internal function]: App\Http\Controllers\SpeechController->interpretSpeech('musique nouveau...')
+>>>>>>> 14cd0ffb95a99698a727f55935fb75bbb1c48107
 #2 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
 #3 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
 #4 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
@@ -8110,17 +8117,28 @@ Stack trace:
 #15 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #16 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #17 {main}  
+<<<<<<< HEAD
 [2017-08-30 08:52:59] lumen.ERROR: ErrorException: Undefined variable: res in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:249
 Stack trace:
 #0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/SpeechController.php(249): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(8, 'Undefined varia...', '/home/apprenant...', 249, Array)
 #1 [internal function]: App\Http\Controllers\SpeechController->interpretSpeech('gen')
+=======
+[2017-08-30 10:12:54] lumen.ERROR: ErrorException: Invalid argument supplied for foreach() in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MusicController.php:224
+Stack trace:
+#0 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MusicController.php(224): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'Invalid argumen...', '/home/apprenant...', 224, Array)
+#1 [internal function]: App\Http\Controllers\MusicController->getSearchTrack('back+in+black')
+>>>>>>> 14cd0ffb95a99698a727f55935fb75bbb1c48107
 #2 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
 #3 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
 #4 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
 #5 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/illuminate/container/Container.php(539): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
 #6 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(741): Illuminate\Container\Container->call(Array, Array)
 #7 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(707): Laravel\Lumen\Application->callControllerCallable(Array, Array)
+<<<<<<< HEAD
 #8 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\SpeechController), 'interpretSpeech', Array)
+=======
+#8 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(681): Laravel\Lumen\Application->callLumenController(Object(App\Http\Controllers\MusicController), 'getSearchTrack', Array)
+>>>>>>> 14cd0ffb95a99698a727f55935fb75bbb1c48107
 #9 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
 #10 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
 #11 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
@@ -8130,6 +8148,7 @@ Stack trace:
 #15 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #16 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #17 {main}  
+<<<<<<< HEAD
 [2017-08-30 08:53:15] lumen.ERROR: ErrorException: file_get_contents(https://api.themoviedb.org/3/movie/0/videos?api_key=ca23af59f66f1506ef3c055712aa6341&amp;language=fr-FR): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
  in /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/app/Http/Controllers/MoviesController.php:183
 Stack trace:
@@ -8198,3 +8217,5 @@ Stack trace:
 #19 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #20 /home/apprenant/Bureau/HappyProject/data/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #21 {main}  
+=======
+>>>>>>> 14cd0ffb95a99698a727f55935fb75bbb1c48107
