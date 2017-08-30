@@ -11,7 +11,7 @@ class SpeechController extends Controller{
         $message = urldecode($message);
 
         if ($message == "que puis-je faire") {
-            $res['message'] = 'Va dormir, sérieux tu dois être tellement fatigué !';
+            $res['message'] = 'Va dormir, sérieux tu dois être tellement fatigué.';
         }else{
             $message_item = explode(" ", $message);
 
