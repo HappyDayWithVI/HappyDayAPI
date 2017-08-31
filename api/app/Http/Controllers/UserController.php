@@ -52,16 +52,21 @@ class UserController extends Controller{
         }
     }
 
-
+    public function authenticateGoogle($id){
+        $user = User::where('token', $id)->first();
+          
+        $apikey = base64_encode(str_random(40));
+        
+        User::where('token', $id)->update(['subtoken' => "$apikey"]);;
+        
+        return response()->json(['status' => 'success','subtoken' => $apikey]);
+    }
 
 
     public function store(Request $request){
         // $this->validateRequest($request);
 
-        echo "<pre>";
-        var_dump($request);
-        echo "</pre>";
-
+        return "okokok";
         /*
         $user = User::create([
             'name' => $request->get('name'),

@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+$app->get('login/','UserController@authenticate');
+$app->get('login/google/{id}','UserController@authenticateGoogle');
+$app->post('register/','UserController@store');
+
 $app->group(['middleware' => 'auth'], function () use ($app) {
 	$app->get('/', function () use ($app) {
 	    return $app->version();
@@ -70,6 +74,4 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 	// user
 	$app->get('user/{id}', 'UserController@show');
 	$app->post('users', 'UserController@store');
-	$app->get('login/','UserController@authenticate');
-
 });
