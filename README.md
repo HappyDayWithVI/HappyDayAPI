@@ -36,12 +36,15 @@ By default, as it is now, all the routes (expect user interface ones) are protec
 ## Support
 ### FAQ
 > I already have php5 on my computer.
+
 You'll need to remove php 5 from the device to reinstall php7. Follow [these steps](https://angristan.fr/installer-php-7-debian-8-jessie-depot-dotdeb/) to have the proper version of php.
 
 > Will I have to pay to use any of the APIs ?
+
 Only the weather apis and spotify have priced planned. As long as you don't make too much of use of the APIs you should be fine.
 
 > Where can I change external api key ?
+
 In "HappyDayAPI/api/config/api.php" you can basicily find ALL the kay and baseurl stored to get uses later.
 
 ### Need support
