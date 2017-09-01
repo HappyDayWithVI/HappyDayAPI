@@ -71,6 +71,10 @@ class TvshowController extends Controller{
 
         $data_tvshow = json_decode($data_tvshow_url);
 
+        echo "<pre>";
+        var_dump($data_tvshow);
+        echo "</pre>";
+
         $tvshow_name = $data_tvshow[0]->serie_info->name;
         $tvshow_image = $data_tvshow[0]->serie_info->image;
 
