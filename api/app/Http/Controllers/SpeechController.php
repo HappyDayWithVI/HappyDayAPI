@@ -89,7 +89,7 @@ class SpeechController extends Controller{
                     $name = "";
                     $d_name = "";
                     foreach ($message_item as $word) {
-                        if ($word != "personnage" && $word != "serie" ) {
+                        if ($word != "personnage" && $word != "serie" && $word != "acteur" ) {
                             $name .= $word."+";
                             $d_name .= $word." ";
                         }
@@ -222,13 +222,13 @@ class SpeechController extends Controller{
 
                     $res = app('App\Http\Controllers\MoviesController')->getMovies();
 
-                    $res['message'] = "Voilà les resultats que j'ai trouvé pour les films du moment."; 
-                }else if (in_array("personnage", $message_item)) {
+                    $res['message'] = "Voilà les résultats que j'ai trouvé pour les films du moment."; 
+                }else if (in_array("personnage", $message_item) || in_array("acteur", $message_item) ) {
 
                     $name = "";
                     $d_name = "";
                     foreach ($message_item as $word) {
-                        if ($word != "personnage" && $word != "film" ) {
+                        if ($word != "personnage" && $word != "film" && $word != "acteur") {
                             $name .= $word."+";
                             $d_name .= $word." ";
                         }
@@ -279,7 +279,7 @@ class SpeechController extends Controller{
                     $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\MoviesController')->getMovieByTitle($name);
-                    $res['message'] = "Voici les informations que j'ai trouvé sur le film ".$name;
+                    $res['message'] = "Voici les informations que j'ai trouvé sur le film ".str_replace("+", " ", $name);
                 }
             }else if(in_array("livre", $message_item)){
                 if (in_array("de", $message_item)) {
@@ -321,18 +321,19 @@ class SpeechController extends Controller{
                     $res['message'] = $programme;
                 }else{
                    $res = app('App\Http\Controllers\TvguideController')->getTvGuideByTime();
+                    $programme = '';
                    foreach ($res['result'] as $val) {
                         $programme .= $val['title'].", sur ".$val["channel"]. ". ";
                     }
                     $res['message'] = "En ce moment à la télé il y a ".$programme;
 
                 }
-            }else if(in_array("restaurant", $message_item)){
-                if (in_array("meilleur", $message_item)) {
+            }else if(in_array("restaurant", $message_item) || in_array("restaurants", $message_item)){
+                if (in_array("meilleur", $message_item) || in_array("meilleurs", $message_item)) {
                     $city = "";
                     $d_city = "";
                     foreach ($message_item as $word) {
-                        if ($word != "meilleur" || $word != "restaurant" || $word != "a" || $word != "à" || $word != "de") {
+                        if ($word != "meilleur" || $word != "restaurant" || $word != "meilleurs" || $word != "restaurants" || $word != "a" || $word != "à" || $word != "de") {
                             $city .= $word."+";
                             $d_city .= $word." ";
                         }
@@ -354,7 +355,7 @@ class SpeechController extends Controller{
                     unset($message_item[$key+1]);
                     $type= "";
                     foreach ($message_item as $word) {
-                        if ($word != "restaurant" || $word != "a" || $word != "à" ) {
+                        if ($word != "restaurant" || $word != "restaurants" || $word != "a" || $word != "à" ) {
                             $type .= $word."+";
                         }
                     }
@@ -367,12 +368,12 @@ class SpeechController extends Controller{
                     }
                 }
             }else if(in_array("musique", $message_item)){
-                if (in_array("nouveauté",$message_item)){
+                if (in_array("nouveauté", $message_item)){
                     $country = "FR";
                     $res = app('App\Http\Controllers\MusicController')->getNewRealease($country);
 
                     $musicList = "";
-                    foreach ($res['new_release'] as $value) {
+                    foreach ($res['result']['new_releases'] as $value) {
                         $musicList .= $value['name'].' de '.$value['artist_name'].". ";
                     }
 
@@ -389,14 +390,14 @@ class SpeechController extends Controller{
 
                     $musicList = "";
                     for ($i=0; $i < 5; $i++) { 
-                        $musicList .= "un album de .".$res['result']['album']['artist_name'].".";
+                        $musicList .= "un album de .".$res['result']['albums'][$i]['artist_name'].".";
                     }
 
                     $res['message'] = "J'ai trouvé ".$musicList;
-                }else if (in_array("artiste",$message_item)){
+                }else if (in_array("artiste",$message_item) || in_array("chanteur", $message_item)){
                     $elementsought = "";
                     foreach ($message_item as $word){
-                        if ($word != 'musique' && $word != 'artiste'){
+                        if ($word != 'musique' && $word != 'artiste' && $word != 'chanteur'){
                             $elementsought .= $word ."+";
                         }
                     }
