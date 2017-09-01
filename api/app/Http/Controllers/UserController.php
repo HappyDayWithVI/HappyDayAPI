@@ -44,7 +44,7 @@ class UserController extends Controller{
      
             User::where('username', $request->input('username'))->update(['subtoken' => "$apikey"]);;
      
-            return response()->json(['status' => 'success','subtoken' => $apikey]);
+            return response()->json(['status' => 'success','subtoken' => $apikey, 'name' => $user->firstname]);
      
         }else{
             return response()->json(['status' => 'fail'],401);
