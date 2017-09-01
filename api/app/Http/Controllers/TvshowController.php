@@ -67,7 +67,7 @@ class TvshowController extends Controller{
 
         $c = 1;
 
-        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?key='.TVSHOW_KEY.'&?personnage='.$name);
+        $data_tvshow_url = file_get_contents(TVSHOW_BASEURL.'?key='.TVSHOW_KEY.'&personnage='.$name);
 
         $data_tvshow = json_decode($data_tvshow_url);
 

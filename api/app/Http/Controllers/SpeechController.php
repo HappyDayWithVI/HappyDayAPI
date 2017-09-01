@@ -12,6 +12,8 @@ class SpeechController extends Controller{
 
         if ($message == "que puis-je faire") {
             $res['message'] = 'Va dormir, sérieux tu dois être tellement fatigué !';
+        }else if($message == "présente toi"){
+
         }else{
             $message_item = explode(" ", $message);
 
@@ -30,7 +32,7 @@ class SpeechController extends Controller{
                         $city = "";
 
                         foreach ($message_item as $el) {
-                            if ($el != "semaine" && $el != "meteo" ) {
+                            if ($el != "semaine" && $el != "meteo" && $el != "météo" && $el != "cette" ) {
                                 $city .= $el." ";
                             }
                         }                      
@@ -42,7 +44,7 @@ class SpeechController extends Controller{
 
                 if (in_array("semaine", $message_item)) {
                     $res = app('App\Http\Controllers\WeatherController')->getWeeklyWeather($city);
-                    $res['message'] = "Aujourd'hui à ". $res['result']['city'] .". " . $res['result']['week'][0]['day']. ". il fait ". $res['result']['week'][0]['temp'] ." degré. et ". $res['result']['week'][0]['desc'];
+                    $res['message'] = "Voici la météo à ". $res['result']['city'] ." pour les sept jours à venir";
 
                     $alt = $res;
                     unset( $alt['result']['week'][0] );
@@ -70,38 +72,114 @@ class SpeechController extends Controller{
                     }
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByGenre($genre);
-                }else if (in_array("personnage", $message_item)) {
+
+                    if($genre == "horreur"){
+                        $desc_genre = " si vous avez envie de vous faire peur";
+                    }else if($genre == "fantastique"){
+                        $desc_genre = " pour vivre des aventures à côté de dragons...";
+                    }else if($genre == "comédie"){
+                        $desc_genre = " histoire de rigoler un bon coup.";
+                    }else{
+                        $desc_genre = "";
+                    }
+
+                    $res['message'] = "Voici une sélection de série ".$genre.". Vous pouvez regarder ".$res['result']['shows'][0]['name'].", ".$res['result']['shows'][1]['name']." ou, ".$res['result']['shows'][2]['name'].", ".$desc_genre; 
+                }else if (in_array("personnage", $message_item) || in_array("acteur", $message_item) ) {
 
                     $name = "";
+                    $d_name = "";
                     foreach ($message_item as $word) {
                         if ($word != "personnage" && $word != "serie" ) {
                             $name .= $word."+";
+                            $d_name .= $word." ";
                         }
                     }
 
+
+
                     $res = app('App\Http\Controllers\TvshowController')->getCharacterOfTvshowByName($name);
+
+                    $nb_res = count($res["result"]['character_data']);
+                    $serieList = "";
+                    for ($i=0; $i < 5; $i++) { 
+                        $serieList .= $res["result"]['character_data'][$i]["name_character"].". Joué par ".$res["result"]['character_data'][$i]["name_actor"].". ";
+                        if ($i == $nb_res-1) {
+                            break;
+                        }
+                    }
+
+                    $res['message'] = "Voici une liste de ".count($res['result']['character_data'])." personnages que vous pourrez retrouver dans la série ".$d_name. " ainsi que les acteurs qui y jouent comme. ".$serieList;
                 }else if (in_array("avec", $message_item)) {
 
                     $acteur = "";
 
+                    $d_name = "";
                     foreach ($message_item as $word) {                        
                         if ($word != "avec" && $word != "serie" ) {
                             $acteur .= $word."+";
+                            $d_name .= $word." ";
                         }
                     }
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByActor($acteur);
+
+                    $nb_res = count($res["result"]['role_data']);
+
+                    $serieList = "";
+                    for ($i=0; $i < 5; $i++) { 
+                        if ($i != 0) {
+                            $serieList .= "Celui de ";
+                        }
+
+                        $serieList .= $res["result"]['role_data'][$i]["character"]." dans la série ".$res["result"]['role_data'][$i]["tvshow"].". ";
+                        if ($i == $nb_res-1) {
+                            break;
+                        }
+                    }
+
+                    $res['message'] = $d_name." a eu le rôle de ".$serieList; 
                 }else{
+
                     $name = "";
+                    $d_name = "";
                     foreach ($message_item as $word) {
                         if ($word != "serie" ) {
                             $name .= $word."+";
+                            $d_name .= $word." ";
                         }
                     }
 
                     $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\TvshowController')->getTvshowByName($name);
+                    
+                    if (count($res['result']["shows"]) == 1) {
+                        if ($res['result']["shows"][0]['status'] == "En cours") {
+                            $status = ". La série est toujours en cours de diffusion.";
+                        }else{
+                            $status = ". La série est terminée, il n'y aura plus de nouveaux épisode.";
+                        }
+                        $res['message'] = "Voici quelques informations sur la série ".$d_name.". La série comporte ".$res['result']["shows"][0]['episode']." épisodes pour ".$res['result']["shows"][0]['season']." saisons ".$status." Voici le synopsis de la série : ".$res['result']["shows"][0]['resume']; 
+                    }else{
+                        if (count($res['result']["shows"]) > 5) {
+                            $res['message'] = "J'ai trouvé ".count($res['result']["shows"])." dont le titre contient ".$d_name; 
+                        }else{
+                            $nb_res = count($res["result"]['shows']);
+
+                            $serieList = "";
+                            for ($i=0; $i < 5; $i++) {
+
+                                $serieList .= $res["result"]['shows'][$i]["name"].". ";
+                                if ($i == $nb_res-1) {
+                                    break;
+                                }
+                            }
+
+
+                            $res['message'] = "J'ai trouvé les séries suivantes : ".$serieList;
+
+                        }
+                    }
                 }
             }else if(in_array("film", $message_item)){
                 if (in_array("genre", $message_item)) {
@@ -113,32 +191,83 @@ class SpeechController extends Controller{
                         }
                     }
 
+                    if($genre == "horreur"){
+                        $desc_genre = "Si vous avez envie de vous faire peur, ";
+                    }else if($genre == "fantastique"){
+                        $desc_genre = "Pour vivre des aventures à côté de dragons, ";
+                    }else if($genre == "comédie"){
+                        $desc_genre = "Histoire de rigoler un bon coup, ";
+
+
+                    }else{
+                        $desc_genre = "";
+                    }
+
                     $res = app('App\Http\Controllers\MoviesController')->getMoviesByGenre($genre);
+
+                    $nb_res = count($res["result"]);
+
+                    $movieList = "";
+                    for ($i=0; $i < 5; $i++) {
+
+                        $movieList .= $res["result"][$i]["name"].". ";
+                        if ($i == $nb_res-1) {
+                            break;
+                        }
+                    }
+
+
+                    $res['message'] = $desc_genre.", vous pouvez regarder l'un des films suivants. ".$movieList; 
                 }elseif (in_array("nouveau", $message_item)) {
 
                     $res = app('App\Http\Controllers\MoviesController')->getMovies();
 
+                    $res['message'] = "Voilà les resultats que j'ai trouvé pour les films du moment."; 
                 }else if (in_array("personnage", $message_item)) {
 
                     $name = "";
+                    $d_name = "";
                     foreach ($message_item as $word) {
                         if ($word != "personnage" && $word != "film" ) {
                             $name .= $word."+";
+                            $d_name .= $word." ";
                         }
                     }
 
                     $res = app('App\Http\Controllers\MoviesController')->getActorByMovieName($name);
+
+                    $nb_res = count($res["result"]['character_data']);
+                    $serieList = "";
+                    for ($i=0; $i < 5; $i++) { 
+                        $serieList .= $res["result"]['character_data'][$i]["name_actor"]." joue. ".$res["result"]['character_data'][$i]["name_character"].". ";
+                        if ($i == $nb_res-1) {
+                            break;
+                        }
+                    }
+                    $res['message'] = "Les acteurs suivants jouent dans le film ".$d_name.". ".$serieList; 
                 }else if (in_array("avec", $message_item)) {
 
                     $acteur = "";
+                    $d_acteur = "";
 
                     foreach ($message_item as $word) {                        
                         if ($word != "avec" && $word != "film" ) {
                             $acteur .= $word."+";
+                            $d_acteur .= $word." ";
                         }
                     }
 
                     $res = app('App\Http\Controllers\MoviesController')->getMovieByActor($acteur);
+
+                    $nb_res = count($res["result"]['role_data']);
+                    $movieList = "";
+                    for ($i=0; $i < 7; $i++) { 
+                        $movieList .= $res["result"]['role_data'][$i]["movie"].". ";
+                        if ($i == $nb_res-1) {
+                            break;
+                        }
+                    }
+                    $res['message'] = $d_acteur." joue notamment dans les films suivants. ".$movieList;
                 }else{
                     $name = "";
                     foreach ($message_item as $word) {
@@ -150,18 +279,23 @@ class SpeechController extends Controller{
                     $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\MoviesController')->getMovieByTitle($name);
+                    $res['message'] = "Voici les informations que j'ai trouvé sur le film ".$name;
                 }
             }else if(in_array("livre", $message_item)){
                 if (in_array("de", $message_item)) {
+
                     $author = "";
+                    $d_author = "";
 
                     foreach ($message_item as $word) {                       
                         if ($word != "de" && $word != "livre" ) {
                             $author .= $word."+";
+                            $d_author .= $word."+";
                         }
                     }
 
                     $res = app('App\Http\Controllers\BookController')->getBookByAuthor($author);
+                    $res['message'] = $d_author." a écrit les livres suivants";
                 }else{
                     $name = "";
                     foreach ($message_item as $word) {
@@ -173,6 +307,7 @@ class SpeechController extends Controller{
                     $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\BookController')->getBookByName($name);
+                    $res['message'] = " a écrit les livress suivants";
                 }
             }else{
                 $res['message'] = "Je n'ai pas compris ce que tu me demande";
