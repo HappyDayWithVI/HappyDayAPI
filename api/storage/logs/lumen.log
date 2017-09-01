@@ -8541,3 +8541,41 @@ Stack trace:
 =======
 >>>>>>> 14cd0ffb95a99698a727f55935fb75bbb1c48107
 >>>>>>> 432e89775bb098224e125a2bfe95a0b2061ffcfb
+[2017-09-01 03:48:50] lumen.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected 'else' (T_ELSE) in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:385
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile('/home/apprenant...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 [internal function]: spl_autoload_call('App\\Http\\Contro...')
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(729): ReflectionClass->__construct('App\\Http\\Contro...')
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(608): Illuminate\Container\Container->build('App\\Http\\Contro...')
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(575): Illuminate\Container\Container->resolve('App\\Http\\Contro...')
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Application.php(210): Illuminate\Container\Container->make('App\\Http\\Contro...')
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(676): Laravel\Lumen\Application->make('App\\Http\\Contro...')
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  
+[2017-09-01 03:49:13] lumen.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/apprenant/Bureau/HappyDayAPI/api/app/Http/Controllers/SpeechController.php:394
+Stack trace:
+#0 /home/apprenant/Bureau/HappyDayAPI/api/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile('/home/apprenant...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 [internal function]: spl_autoload_call('App\\Http\\Contro...')
+#3 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(729): ReflectionClass->__construct('App\\Http\\Contro...')
+#4 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(608): Illuminate\Container\Container->build('App\\Http\\Contro...')
+#5 /home/apprenant/Bureau/HappyDayAPI/api/vendor/illuminate/container/Container.php(575): Illuminate\Container\Container->resolve('App\\Http\\Contro...')
+#6 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Application.php(210): Illuminate\Container\Container->make('App\\Http\\Contro...')
+#7 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(676): Laravel\Lumen\Application->make('App\\Http\\Contro...')
+#8 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(643): Laravel\Lumen\Application->callControllerAction(Array)
+#9 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(628): Laravel\Lumen\Application->callActionOnArrayBasedRoute(Array)
+#10 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(598): Laravel\Lumen\Application->handleFoundRoute(Array)
+#11 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(532): Laravel\Lumen\Application->handleDispatcherResponse(Array)
+#12 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(781): Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}()
+#13 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(534): Laravel\Lumen\Application->sendThroughPipeline(Array, Object(Closure))
+#14 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
+#15 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
+#16 {main}  

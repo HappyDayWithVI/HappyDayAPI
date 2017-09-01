@@ -307,9 +307,122 @@ class SpeechController extends Controller{
                     $name = rtrim($name,"+");
 
                     $res = app('App\Http\Controllers\BookController')->getBookByName($name);
-                    $res['message'] = " a écrit les livress suivants";
+                    $res['message'] = "Voilà les resultats que j'ai trouvé pour le livre ".$name;
                 }
-            }else{
+            }else if(in_array("programme", $message_item)){
+                if (in_array("soir", $message_item)) {
+                    $res = app('App\Http\Controllers\TvguideController')->getTvGuideTonigt();
+
+                    $programme = '';
+
+                    foreach ($res['result'] as $val) {
+                        $programme .= "Sur ".$val["channel"]. ", ".$val['title'].". ";
+                    }
+                    $res['message'] = $programme;
+                }else{
+                   $res = app('App\Http\Controllers\TvguideController')->getTvGuideByTime();
+                   foreach ($res['result'] as $val) {
+                        $programme .= $val['title'].", sur ".$val["channel"]. ". ";
+                    }
+                    $res['message'] = "En ce moment à la télé il y a ".$programme;
+
+                }
+            }else if(in_array("restaurant", $message_item)){
+                if (in_array("meilleur", $message_item)) {
+                    $city = "";
+                    $d_city = "";
+                    foreach ($message_item as $word) {
+                        if ($word != "meilleur" || $word != "restaurant" || $word != "a" || $word != "à" || $word != "de") {
+                            $city .= $word."+";
+                            $d_city .= $word." ";
+                        }
+                    }
+
+                    $res = app('App\Http\Controllers\RestaurantController')->getBestRestaurantByCity($city);
+
+                    $restaurantList = "";
+                    foreach ($res['result'] as $food) {
+                        $restaurantList .= $food['name'].". ";
+                    }
+                    $res['message'] = "Les ".str_replace("+", " ", $city)." sont : ".$restaurantList;
+                }else{
+                    if ($key = array_search('à', $message_item)) {
+                        $assumed_city = $message_item[$key+1];
+                    }else if($key = array_search('a', $message_item)){
+                        $assumed_city = $message_item[$key+1];
+                    }
+                    unset($message_item[$key+1]);
+                    $type= "";
+                    foreach ($message_item as $word) {
+                        if ($word != "restaurant" || $word != "a" || $word != "à" ) {
+                            $type .= $word."+";
+                        }
+                    }
+                    $res = app('App\Http\Controllers\RestaurantController')->getRestaurantByName($type, $assumed_city);
+
+                    if (count($res['result']) != 1) {
+                        $res['message'] = "J'ai trouvé ".count($res['result'])." restaurants qui pourraient correspondre à votre recherche";
+                    }else{
+                        $res['message'] = "Vous trouverez le restaurant ".$res['result'][0]['name']." au ".$res['result'][0]['adress'].". Il obtient une note de ".$res['result'][0]['rating']." sur 10. Pourquoi ne pas aller y manger quelque chose ? ";
+                    }
+                }
+            }else if(in_array("musique", $message_item)){
+                if (in_array("nouveauté",$message_item)){
+                    $country = "FR";
+                    $res = app('App\Http\Controllers\MusicController')->getNewRealease($country);
+
+                    $musicList = "";
+                    foreach ($res['new_release'] as $value) {
+                        $musicList .= $value['name'].' de '.$value['artist_name'].". ";
+                    }
+
+                    $res['message'] = "Voici les dernières nouveautés musique française. ".$musicList;
+                }else if (in_array("album",$message_item)){
+                    $elementsought = "";
+                    foreach ($message_item as $word){
+                        if ($word != 'musique' && $word != 'album'){
+                            $elementsought .= $word ."+";
+                        }
+                    }
+                    
+                    $res = app('App\Http\Controllers\MusicController')->getSearchAlbum(trim($elementsought,"+"));
+
+                    $musicList = "";
+                    for ($i=0; $i < 5; $i++) { 
+                        $musicList .= "un album de .".$res['result']['album']['artist_name'].".";
+                    }
+
+                    $res['message'] = "J'ai trouvé ".$musicList;
+                }else if (in_array("artiste",$message_item)){
+                    $elementsought = "";
+                    foreach ($message_item as $word){
+                        if ($word != 'musique' && $word != 'artiste'){
+                            $elementsought .= $word ."+";
+                        }
+                    }
+                    $res = app('App\Http\Controllers\MusicController')->getSearchArtist(trim($elementsought,"+"));
+                    $res['message'] = "Voici les albums et chansons de ".str_replace("+", " ", $elementsought);
+                }else if (in_array("chanson",$message_item)){
+                    $elementsought = "";
+                    foreach ($message_item as $word){
+                        if ($word != 'musique' && $word != 'chanson'){
+                            $elementsought .= $word ."+";
+                        }
+                    }
+                    
+                    $res = app('App\Http\Controllers\MusicController')->getSearchTrack(trim($elementsought,"+"));
+                }else if (in_array("playlist",$message_item)){
+                    $elementsought = "";
+                    foreach ($message_item as $word){
+                        if ($word != 'musique' && $word != 'playlist'){
+                            $elementsought .= $word ."+";
+                        }
+                    }
+
+                    $res = app('App\Http\Controllers\MusicController')->getSearchPlaylist(trim($elementsought,"+"));
+
+                }
+            } else{
                 $res['message'] = "Je n'ai pas compris ce que tu me demande";
             }
         }
