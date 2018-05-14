@@ -8964,3 +8964,51 @@ Stack trace:
 #16 /home/apprenant/Bureau/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(475): Laravel\Lumen\Application->dispatch(NULL)
 #17 /home/apprenant/Bureau/HappyDayAPI/api/public/index.php(28): Laravel\Lumen\Application->run()
 #18 {main}  
+[2017-09-01 08:52:26] lumen.ERROR: Symfony\Component\Console\Exception\RuntimeException: Too many arguments, expected arguments "command" "name". in /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php:189
+Stack trace:
+#0 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php(88): Symfony\Component\Console\Input\ArgvInput->parseArgument('\xE2\x80\x94-create=user...')
+#1 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/Input.php(63): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Command/Command.php(222): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 /home/tutoswebapi/HappyDayAPI/api/vendor/illuminate/console/Command.php(167): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#4 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(888): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(224): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(125): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /home/tutoswebapi/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Console/Kernel.php(84): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /home/tutoswebapi/HappyDayAPI/api/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 {main}  
+[2017-09-01 08:52:32] lumen.ERROR: Symfony\Component\Console\Exception\RuntimeException: Too many arguments, expected arguments "command" "name". in /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php:189
+Stack trace:
+#0 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php(88): Symfony\Component\Console\Input\ArgvInput->parseArgument('\xE2\x80\x94-create=user...')
+#1 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/Input.php(63): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Command/Command.php(222): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 /home/tutoswebapi/HappyDayAPI/api/vendor/illuminate/console/Command.php(167): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#4 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(888): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(224): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(125): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /home/tutoswebapi/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Console/Kernel.php(84): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /home/tutoswebapi/HappyDayAPI/api/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 {main}  
+[2017-09-01 08:56:21] lumen.ERROR: Symfony\Component\Console\Exception\RuntimeException: Too many arguments, expected arguments "command" "name". in /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php:189
+Stack trace:
+#0 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php(88): Symfony\Component\Console\Input\ArgvInput->parseArgument('\xE2\x80\x94-create=user')
+#1 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/Input.php(63): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Command/Command.php(222): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 /home/tutoswebapi/HappyDayAPI/api/vendor/illuminate/console/Command.php(167): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#4 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(888): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(224): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(125): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /home/tutoswebapi/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Console/Kernel.php(84): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /home/tutoswebapi/HappyDayAPI/api/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 {main}  
+[2017-09-01 08:56:27] lumen.ERROR: Symfony\Component\Console\Exception\RuntimeException: Too many arguments, expected arguments "command" "name". in /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php:189
+Stack trace:
+#0 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/ArgvInput.php(88): Symfony\Component\Console\Input\ArgvInput->parseArgument('\xE2\x80\x94-create=user...')
+#1 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Input/Input.php(63): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Command/Command.php(222): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 /home/tutoswebapi/HappyDayAPI/api/vendor/illuminate/console/Command.php(167): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#4 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(888): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(224): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /home/tutoswebapi/HappyDayAPI/api/vendor/symfony/console/Application.php(125): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /home/tutoswebapi/HappyDayAPI/api/vendor/laravel/lumen-framework/src/Console/Kernel.php(84): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /home/tutoswebapi/HappyDayAPI/api/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 {main}  
